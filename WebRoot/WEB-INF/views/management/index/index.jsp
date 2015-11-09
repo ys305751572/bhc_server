@@ -403,7 +403,7 @@
                         <a href="#" name="firstMenu"><span class="aol aol-users"></span> 医师管理<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li id="menu5_1" onclick="changeMenu(this.id,'用户管理&nbsp;>&nbsp;医师信息查询')">
-                                <a href="${contextPath}/management/aoluser/userslist" target="mainIFrame">医师信息查询</a>
+                                <a href="${contextPath}/management/doctor/page" target="mainIFrame">医师信息查询</a>
                             </li>
                         </ul>
                     </li>

@@ -6,12 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
 import com.gcs.aol.dao.DoctorDAO;
 import com.gcs.aol.entity.Doctor;
 import com.gcs.aol.service.IDoctorManager;
 import com.gcs.sysmgr.service.impl.GenericManagerImpl;
 
+@Service
 public class DoctorManagerImpl extends GenericManagerImpl<Doctor, DoctorDAO> implements IDoctorManager {
 
 	@Autowired

@@ -64,6 +64,8 @@ public class DoctorContorller extends GenericEntityController<Doctor, Doctor, Do
 	 * @param sEcho
 	 * @return
 	 */
+	@RequestMapping(value = "page",method = RequestMethod.POST)
+	@ResponseBody
 	public JSONResponse pageList(Doctor doctor,Integer iDisplayLength, Integer iDisplayStart,String sEcho) {
 		int currentPage = PageUtil.getCurrentPage(iDisplayStart, iDisplayStart);
 		Page<Doctor> doctorPage = null;
