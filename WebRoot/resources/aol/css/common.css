@@ -1,0 +1,317 @@
+
+/* 全局元素样式 
+html{overflow-y: auto;height:100%;}
+body{color:#444; background:#fff; font-size:12px; line-height:1.666; font-family: verdana; min-width: 1266px; _width:expression(this.parentNode.clientWidth > 1266 ? 'auto' : '1266px'); height: 100%; min-height: 600px; _height:expression(this.parentNode.clientHeight > 600 ? 'auto' : '600px'); overflow: auto; position:relative;}
+body,h1,h2,h3,h4,h5,h6,ul,ol,li,form,p,dl,dt,dd,table,th,td,fieldset,menu,pre{margin:0;padding:0;}
+table,th,td,img,fieldset{border:0;}
+em,i,th{font-style:normal;text-decoration:none;}
+h1,h2,h3,h4,h5,h6,th{font-size:100%;font-weight:normal;}
+input,select,button,textarea,table{margin:0;font-family:inherit;font-size:100%;}
+ul,ol{list-style:none;}
+table{border-collapse:collapse;border-spacing:0;}
+body,input,textarea{font-family:'Microsoft Yahei',verdana;}
+input[type=text],
+input[type=password],
+select{border: solid 1px #ccc;border-radius: 3px;background: #fff;color: #666;}
+input[type=text],
+input[type=password]{text-indent: 5px;}
+*/
+
+/* 搜索输入框 */
+input.searchBtn-side-text,
+select.searchBtn-side-text{border-radius: 3px 0px 0px 3px;border-right: none;}
+
+/* 主页链接 */
+a{color:#008810;text-decoration:none;}
+.txt-link{color:#008810;}
+.txt-link{outline:0;cursor:pointer;padding:2px 4px 4px;+padding:0px 4px;text-decoration:none;border-radius:4px;}
+.txt-link:active,
+.txt-link:hover,
+.txt-link:focus{background-color:#008810;color:#fff!important;}
+.oH{zoom:1;outline:0;margin:0 5px;text-decoration:none;color:#666!important;}
+.oH:focus{background-color:#eee;}
+
+/* 滚动条样式 */
+.scroll{position:relative;overflow:auto;}
+.scroll::-webkit-scrollbar{width:8px;height:8px;}
+.scroll::-webkit-scrollbar-track{border-radius:10px;-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0);}
+.scroll::-webkit-scrollbar-track:hover{-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.4);background-color:rgba(0,0,0,0.01);}
+.scroll::-webkit-scrollbar-track:active{-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.4);background-color:rgba(0,0,0,0.05);}
+.scroll::-webkit-scrollbar-thumb{background-color:rgba(0,0,0,0.05);border-radius:10px;-webkit-box-shadow:inset 1px 1px 0 rgba(0,0,0,0.1);}
+.scroll:hover::-webkit-scrollbar-thumb{background-color:rgba(0,0,0,0.2);border-radius:10px;-webkit-box-shadow:inset 1px 1px 0 rgba(0,0,0,0.1);}
+.scroll::-webkit-scrollbar-thumb:hover{background-color:rgba(0,0,0,0.4);-webkit-box-shadow:inset 1px 1px 0 rgba(0,0,0,0.1);}
+.scroll::-webkit-scrollbar-thumb:active{background:rgba(0,0,0,0.6);}
+.scroll-hasShadow{box-shadow:0 0 2px rgba(0,0,0,0.2);}
+
+/* 左菜单 */
+.tree-item{clear:both;font-size:14px; line-height:1.666;position:relative;zoom:1;}
+.tree-item .tree-item{font-weight: normal;}
+.tree-item-isHidden{display:none;}
+.tree-item-text{position:relative;z-index:1;}
+
+/* 首页文字信息 */
+.txt-tips{color:#999!important;}
+
+/* 页面按钮公共样式 */
+.w44-h21-btn,.w44-h28-btn,
+.w54-h28-btn,
+.w54-h28-dis-btn,
+.w84-h28-btn,
+.w104-h28-btn,
+.search-toolbar .full-view-a,
+.h-info-txt .showMapBtn,
+.search-toolbar .posSearch-a,
+.search-toolbar .trackSearch-a{color: #fff;border: 0;cursor: pointer;background-image: url(../images/btn_bg.png);}
+
+/* 公共背景颜色 */
+.menu li,
+.menu li.selected,
+.search-toolbar{background-image: url(../images/line_bg.png);}
+
+/* 公共图标 */
+.tree-item-symbol,
+.tree-item-arrow,
+.radio-box i,
+.dL-table .dataTable-delA,
+.dL-table .dataTable-editA,
+.showMap-icon{background-image: url(../images/small_icon.png);background-repeat: no-repeat;}
+
+.body-box{
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+/* 头部内容 */
+.head-box{position: absolute;left: 0;right: 0;top: 0; height: 104px;width: 100%;}
+.logo-box{position: relative;top: 12px; left: 12px;}
+.logo-box, .top-nav-box{float: left;}
+.top-nav-box{position: relative;top: 30px; left: 60px;}
+.top-nav-box li{float: left;}
+
+/* 头部菜单 */
+.menu-box{width: 100%; height: 36px;position: absolute;top: 68px; left: 0px;}
+.menu{margin-left: 12px;font-size: 14px;color: #6a6a6a;}
+.menu li{width: 118px; height: 32px;line-height: 32px;text-align: center;float: left;border: solid #ccc;border-top-left-radius: 3px;border-top-right-radius: 3px;border-width: 1px 1px 0 1px;margin-right: -1px;cursor: pointer;background-position: 0 -116px;}
+.menu li.selected{border-color: #037c11;border-width: 1px 1px 0;position: relative;font-weight: bold;color: #fff;background-position: 0 -76px;}
+.menu-line{background-image: url(../images/bgx.png);background-position: 0 -85px;position: absolute; top: 31px; bottom: 0; left: 0;width: 100%;height: 5px;}
+
+/* 页面主体 */
+.main-box{position: absolute;left: 0;right: 0;top: 104px;bottom: 0;width: 100%;height: auto;}
+.main-left{width: 200px;position: absolute;top: 0;left: 0;bottom: 0;padding-top: 10px; background: #f6f6f6; border-right: solid 1px #ccc; font-size: 15px;}
+
+
+/* 主页内容 */
+.main-content{position: absolute;top: 0;left: 0px;bottom: 0;right: 0;}
+/* 内容中间部分 */
+.main-center{position: absolute;top: 0;left: 22px;bottom: 20px;right: 274px;margin: 18px 0px;}
+.center-top{margin-bottom: 10px;}
+.center-top p{height: 30px;line-height: 30px;font-size: 14px;}
+.center-panel{width: 100%;height: auto;position: relative;background: #FAFAFA;}
+.panel-tab{height: 32px; background: #EFEFEF; overflow: hidden;}
+.panel-tab-a{height: 23px;width: 25%;float: left;position: relative;padding-top: 8px;white-space: nowrap;cursor: pointer;}
+.panel-tab-borderBottom{height:1px;width:100%;position:absolute;top:31px;left:0;z-index:1;overflow:hidden;background-color:#c7c7c7;}
+.panel-tab-onA{z-index:2;border:1px solid #c7c7c7;border-bottom-color:#fafafa;background:#fafafa;border-radius:2px;font-weight:700;height:30px;margin-left:-1px;}
+.panel-tab-borderLeft{height:31px;width:1px;display:none;position:absolute;font-size:0;left:-1px;top:0;background:#c7c7c7;}
+.panel-tab-onA .panel-tab-borderLeft{display:block;}
+.panel-tab-text{line-height:normal;border-right:1px solid #ccc;text-align:center;font-size:14px;color:#555;margin:0;overflow:hidden;}
+.panel-tab-onA .panel-tab-text{border-right:0;}
+.panel-info{position: relative;width: 100%;height: auto;}
+
+/* 云推荐 */
+#home-app-box{width: 660px;padding: 50px 0px; margin: auto;}
+#home-app-box div{width: 217px; height: 160px; display: inline-block;text-align: center;}
+#home-app-box div a{width: 105px; height: 105px; display: block; margin: auto; cursor: pointer; background-image: url(../images/app_icons.png); background-repeat: no-repeat;}
+#home-app-box div span{font-size: 16px; color: #333; display: block;}
+
+#app-jkjc-icon{background-position: 0px 0px;}
+#app-jkyj-icon{background-position: -105px 0px;}
+#app-gljg-icon{background-position: -210px 0px;}
+#app-wzcx-icon{background-position: 0px -105px;}
+#app-gjcx-icon{background-position: -105px -105px;}
+#app-jjhj-icon{background-position: -210px -105px;}
+#app-ytxl-icon{background-position: 0px -210px;}
+#app-yjbh-icon{background-position: -105px -210px;}
+#app-jktx-icon{background-position: -210px -210px;}
+
+.center-foot{height: 40px;font-family: simsun;line-height: normal;margin-top: 12px;color: #999;}
+.center-foot .txt-link{color:#999;}
+.center-foot .txt-link:hover{text-decoration:none;}
+
+/* 主页右边内容 */
+.main-right{width: 230px;position: absolute;top: 0;bottom: 0;right: 22px;margin: 18px 0px;}
+/* 天气 */
+.weather-div{position:absolute;width:230px;right:0;top:0;z-index:1;}
+.weather-info{width:230px;height:130px;position:relative;}
+.weather-info-nav{height:22px;width:229px;overflow:hidden;position:relative;z-index:2;padding-left:1px;_padding-left:2px;}
+.weather-info-nav-a{width:66px;float:left;height:21px;cursor:pointer;color:#555;background:#fff;display:block;overflow:hidden;}
+.weather-info-nav-onA{border:1px solid #e0e0e0;border-radius:2px;width:66px;float:left;height:22px;margin-left:-1px;}
+.weather-info-nav-onA .weather-info-nav-aText{border:0;font-weight:700;margin-top:3px;}
+.weather-info-nav-aText{line-height:normal;margin-top:4px;width:65px;border-right:1px solid #e0e0e0;text-align:center;}
+.weather-info-cnt{height:108px;position:relative;width:229px;}
+.weather-info-cnt-each{height:108px;position:relative;width:229px;}
+.gWel-weatherIfr{border:0;overflow:visible;width:230px;background:0;margin-top:0;}
+.weather-info-line{position:absolute;height:1px;width:230px;top:21px;background:#e0e0e0;z-index:1;font-size:0;overflow:hidden;}
+
+/* 产品展示 */
+.upShow{width:230px;height:225px;overflow:hidden;}
+.downShow{width:228px;height:62px;border:1px solid #d8d8d8;overflow:hidden;background:#e8eff8;margin-top:12px;position:relative;}
+.downShow-imgLink{display:block;position:absolute;top:8px;left:8px;}
+.downShow-imgLink-img{display:block;}
+.downShow-textLink,
+.downShow-textTips{position:absolute;line-height:normal;overflow:visible;width:150px;zoom:1;}
+.downShow-textLink{left:72px;top:12px;}
+.downShow-textTips{left:72px;top:36px;}
+.downShow-textLink-a{font-size:14px;}
+.downShow-textLink .txt-link{margin-left:-4px;position:absolute;top:0;}
+
+/* 页面位置信息 */
+.page-pos-text-p{height: 22px;font-size: 13px;}
+/* 位置信息搜索栏 */
+.search-toolbar{height:40px;line-height:40px;border:solid 1px #F2F2F2;background-position: 0 -152px;overflow-x: auto;overflow-y: hidden;}
+.search-toolbar .h-searchBtn{margin-left: 10px;}
+.search-toolbar .shortcut-key-div a{font-size: 15px;margin-right: 15px;padding: 2px 5px;cursor: pointer;}
+.search-toolbar .shortcut-key-div a:hover{background: #69B256;color: #fff;}
+.search-toolbar .full-view-a{width: 65px; height: 21px;line-height: 21px;display: block; float: right; text-align: center;background-position: 0 -278px;}
+.search-toolbar .search-toolbar-a{height: 22px;line-height: 22px;display: block; padding-left: 10px; margin-top: 9px;}
+.search-toolbar #searchProSpan{display: block; float: left; margin-left: 10px;}
+.search-toolbar .posSearch-a{width: 99px; background-position: 0 -214px; float: left;}
+.search-toolbar .posSearch-dis-a{background-position: -119px -214px; color: #eee; cursor: default;}
+.search-toolbar .trackSearch-a{width: 71px;background-position: 0 -246px;}
+/* 曲线图 */
+.charts-div{margin: 5px 0px;border: solid 1px #ccc;}
+/* 健康信息 */
+.h-info-txt{height: 102px;margin-top: 10px; background: #FDFDFD;border: solid 1px #F2F2F2; border-bottom: none;}
+.h-info-txt p{padding: 7px 0;border-bottom: solid 1px #F2F2F2;text-indent: 12px; position: relative;}
+.h-info-txt .showMapBtn{width: 116px; height: 21px; position: absolute; right: 20px; background-position: 0 -183px;}
+.h-info-txt font{margin-right: 20px;}
+
+/* 设置选项栏 */
+.set-toolbar{height: 42px;border-bottom: solid 1px #ccc;background: #FAFAFA;}
+.set-toolbar span{padding: 0 10px; height: 30px;line-height: 30px; text-align: center;display: block;float: left;color: #008810;font-size: 15px;margin-top: 11px;cursor: pointer;}
+.set-toolbar #set-toolbar-span-cur{height: 31px;background: #fff;border-color: #ccc;border-width: 1px 1px 0 1px;border-style: solid;border-top-left-radius: 3px;border-top-right-radius: 3px;}
+/* 设置内容 */
+.set-main,
+.info-main{margin: 0px 5px 0px 15px;}
+.set-main .info-set-main div{height: 32px;line-height: 32px;clear: both;margin-top: 6px;font-size: 14px;}
+.set-main div p{display: block;float: left;}
+.set-main .label{width: 80px; margin-right: 10px;}
+.set-main select{width: 115px;height: 28px;margin-right: 10px;}
+.set-main input[type=text],
+.set-main input[type=password]{height: 24px;}
+.set-main input[type=radio]{margin-top: 10px;}
+.set-main table{font-size: 14px;}
+.set-main table tr{height:46px;}
+
+/* 健康提醒 */
+.clock-checktip-p{width: 90px; height: 100%; font-size: 12px; color: red;}
+.clock-name{height: 100%; margin-left: 20px;}
+.clock-name input{width: 180px; margin: 27px 10px;}
+.clock-type,.clock-state{margin-left: 60px;}
+.clock-time select{width: 50px; margin: 0px;}
+.clock-type select,.clock-state select{width: 70px; margin: 0px;}
+
+/* 设置输入框 */
+.input-set div{height: 82px;line-height: 82px;font-size: 14px;border-bottom: solid 1px #ccc;clear: both;}
+.input-set .tel-set-p{position: relative;top: 28px;}
+.input-set .tel-checktip-p{position: relative;}
+.input-set .input-set-item{height: auto;padding: 20px 0px;}
+.input-set .input-set-item div{height: 30px;line-height: 30px;border: none;}
+.input-set span{margin: 0px 10px;}
+.input-set input{height: 24px;}
+.tel-set-box input{width: 354px;}
+/* 设置开关 */
+.toggle-set{height: 102px;font-size: 14px;border-bottom: solid 1px #ccc;}
+.toggle-set div{float: left;margin-top: 20px;position: absolute;}
+.toggle-set .toggle-set-text{left: 30px;}
+.toggle-set .toggle-set-radio{left: 222px;}
+.toggle-set p{height: 32px;}
+.toggle-set p *{cursor: pointer;}
+
+.radio-box i{height: 14px;line-height: 14px;display: inline-block;text-align: right;cursor: pointer;margin-right: 30px;padding-left: 20px;background-position: 0 -26px;}
+.radio-box .checked{background-position: 0 -47px;}
+/* 设置页面页脚 */
+.set-footer-line1{border-top: solid 1px #eee;}
+.set-footer-line2{border-top: solid 2px #ddd;}
+.set-footer{height: 46px;background: #F6F6F6;}
+.set-footer .saveBtn{margin: 8px 0px 0px 15px;}
+.set-footer .set-foot-result{padding: 0px 30px;}
+.set-footer .set-footer-remind{color: red;display: none;}
+
+/* 数据列表搜索栏 */
+.dL-search-toolbar{height: 50px;}
+.dL-search-toolbar div{float: left;position: relative;top: 11px;}
+
+.toolbar-input{width: 154px;height: 26px;margin: 0px 0px 0px 12px;border: solid 1px #ccc;border-radius: 3px;}
+.toolbar-input input{width: 150px;height: 18px;position: absolute;top: 0;left: 0;padding: 4px 4px 4px 0px;border: 0;}
+.toolbar-input label{height: 26px;line-height: 26px;text-indent: 5px;position: absolute;top: 0;left: 0;cursor: text;}
+.toolbar-select-btn{height: 28px;margin: 0px 0px 0px 12px;}
+.toolbar-select-btn .standard_select{display: inline-block; border: solid 1px #ccc; border-radius: 3px 0px 0px 3px; border-right: none; padding: 4px;} /*边框调整此处改变select高度*/
+.toolbar-select .standard_select{border-right: solid 1px #ccc; border-radius: 3px;}
+.toolbar-select-btn .select_shelter{display: inline-block; height: 18px; overflow: hidden;position: relative;top: 0;left: 0;}/*遮挡默认边框*/
+.toolbar-select-btn .select_shelter select{*margin: -2px; padding: 1px;  border: 0px; width: 125px; outline: 0;cursor: pointer;position: relative;top: -1px;left: 0;}/*select的宽度*/
+.toolbar-select-btn img{position: absolute;top: 2px;left: 109px;cursor: pointer;}
+.toolbar-select-btn input{position: absolute;top: 0;left: 132px;*left: 130px;}
+.toolbar-input-btn{width: 199px;height: 28px;margin-left: 12px;}
+.toolbar-input-btn input[type=text]{width: 150px;height: 18px;position: absolute;top: 0;left: 0;padding: 4px 4px 4px 0px;}
+.toolbar-input-btn label{height: 28px;line-height: 30px;position: absolute;top: 0;left: 0;text-indent: 5px;cursor: text; font-size: 12px;}
+.toolbar-input-btn input[type=button]{position: absolute;top: 0;left: 154px;}
+.toolbar-btn-div input{margin-left: 12px;}
+.toolbar-res-div, .toolbar-note-div{height: 28px;line-height: 28px;margin-left: 12px;}
+
+/* 数据列表 */
+.dL-table{width:100%; margin: 0px;table-layout: fixed;}
+.dL-table tr{height: 38px;border-bottom: solid 1px #eee;}
+.dL-table .hid-operate-td *{display: none;}
+.dL-table .hid-operate-td a{width: 16px; height: 16px;float: left;margin-left: 12px;}
+.dL-table .dataTable-editA{background-position: -24px -70px;}
+.dL-table .dataTable-delA{background-position: 0px -70px;}
+.dL-table .hid-operate-td span{float: right;margin-right: 15px;}
+.dL-table tr:hover{background: #F6F6F6;}
+.dL-table input[type=text]{background: none;}
+.dL-table tr:hover .hid-operate-td *{display: inline;}
+.dL-table .dL-feild-tr{height: 24px;background: #FBFBFB;}
+.dL-table .dL-feild-tr:hover{background: #FBFBFB;}
+.dL-table td{text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
+.dL-table .serialNum-td *{position: relative;left: 20px;}
+.dL-table .serialNum-td input{top: 2px;}
+.showMap-text{height: 17px; border-bottom: 1px solid #008810; display: block; float: left; margin-left: 10px;}
+.showMap-icon{height: 10px; width: 20px; display: block; float: left; margin: 5px 0 0 5px; background-position: 0px -279px;}
+
+/* 普通用户登录开关 */
+.loginSwitch{width: 46px;height: 26px; border: 0; cursor: pointer;}
+.loginOffSwitch{background:url(../images/btn_off.png);}
+.loginOnSwitch{background:url(../images/btn_on.png);}
+
+/* 分页条 */
+.pagingBar{height: 26px; padding-top: 6px; text-indent: 16px; background: #FBFBFB; border-bottom: solid 1px #eee;}
+.pagingBar *{padding: 3px 5px;}
+.pagingBar b{color: #008810;}
+.pagingBar a:link{color: #666;}
+.pagingBar a:hover{background: #69B256;color: #fff;}
+.pagingBar a.disPageA{cursor:default;}
+.pagingBar a.disPageA:link{color: #bbb;}
+.pagingBar a.disPageA:hover{background: none;}
+.pagingBar select{width: auto;height: 20px;margin: 0px 3px;padding: 0px;}
+
+/* 页面按钮 */
+.w44-h21-btn{width: 44px; height: 21px;background-position: 0 -152px;}
+.w44-h21-btn:hover{background-position: -54px -152px;}
+.w44-h28-btn{width: 44px; height: 28px;background-position: 0 -114px;}
+.w44-h28-btn:hover{background-position: -54px -114px;}
+.w54-h28-btn{width: 54px; height: 28px;background-position: 0 -76px;}
+.w54-h28-btn:hover{background-position: -64px -76px;}
+.w54-h28-dis-btn,
+.w54-h28-dis-btn:hover{width: 54px; height: 28px;color: #eee;cursor: default;background-position: -128px -76px;}
+.w104-h28-btn{width: 104px; height: 28px;background-position: 0 0;}
+.w104-h28-btn:hover{background-position: -114px 0;}
+
+
+/* 地图图标 */
+.MFMP_pngImg0, 
+.MFMP_Business, 
+.MFMP_btnchoose, 
+.MFMP_MAPTOOLS_rightMenuCont1, 
+.MFMP_MAPTOOLS_rightMenuCont{display:none;}

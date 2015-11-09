@@ -1,0 +1,22 @@
+ div#popCity{ visibility: hidden; font: 13px Arial;position: absolute;top: 0;left: 0;background-color: #fff; box-shadow: 2px 2px 3px rgba(0,0,0,0.3);border: 1px solid #85BEE5;width: 400px;}
+      div#popCity h1{font-size: 14px;background-color:#85BEE5;padding: 5px;color: #fff; } 
+      ul#popMenu{margin-top: 5px;overflow: hidden;zoom:1;}
+      ul#popMenu li{display: block;float:left;margin-left:5px; cursor: pointer; font: 13px Arial;border: 1px solid #85BEE5;background-color: #e1effe;padding: 2px 5px;height: 16px;}
+      ul#popMenu li.active{background-color: #fff;border-bottom: 1px solid #fff;position: relative;}
+      div#popCityCon{border-top: 1px solid #85BEE5;margin-top: -1px;padding: 5px 0;}
+      div#popCityCon div{display: none;}
+      div#popCityCon div.active{display: block;}
+      div#popCityCon dl{overflow: hidden;margin:2px 0;overflow: hidden;}
+      div#popCityCon dt{float: left;width: 50px;text-align: center;color: #666;}
+      div#popCityCon dd{float: left;width: 350px;}
+      div#popCityCon a{ cursor: pointer;padding: 2px 5px;color: #3b5998;display: inline-block;}
+      div#popCityCon a:hover{background-color: orange;color: #fff;}
+      div#popCityCon a.active{background-color: orange;color: #fff;}
+      div#popCityCon div.active{display: block;}
+
+      /*ËÑË÷ÌáÊ¾¿ò*/
+      #popList{ visibility: visible;border: 1px solid #ccc;font: 14px Arial;background-color: #fff;position: absolute;}
+      #popList ul{width: 100%;list-style-type: none;}
+      #popList ul li{padding: 5px;}
+      #popList ul li:hover{background-color: #ececec;cursor:default; }
+      #popList ul li.active{background-color: #ececec;cursor:default; }

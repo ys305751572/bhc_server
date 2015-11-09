@@ -1,0 +1,26 @@
+@charset "utf-8";
+.cir {
+	border: none;
+	padding: 0;
+	margin: 0;
+	width: 16px;
+	height: 13px;
+}
+
+.Rr {
+	background: url(../images/mail2.png) -48px -18px no-repeat;
+}
+
+.Ru {
+	background: url(../images/mail2.png) -48px -2px no-repeat;
+}
+.ico_mailtitle {
+	border: none;
+	padding: 0;
+	margin: 0;
+	background: url(../images/mail2.png) 1px -82px no-repeat;
+	width: 16px;
+	height: 16px;
+}
+
+

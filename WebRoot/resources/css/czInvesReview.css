@@ -1,0 +1,27 @@
+.datatable_row_selected{
+	background: #cfefef;
+}
+.datatable_tableLeft{
+	margin-top:4px;
+	font-size:13px;
+	border: 1px solid #fff;
+	float: left;
+}
+.datatable_tableCenter{
+	font-size:11px;
+	vertical-align:middle;
+	float: left;
+	border: 1px solid #fff;
+}	
+
+.datatable_tableRight{
+	border: 1px solid #fff;
+	float: right;
+	position:relative;
+	right: 40%;
+}
+.datatable_td_selected{
+	background: #cfefef;
+}
+
+ul.breadcrumb a {text-decoration: none;cursor:pointer;}

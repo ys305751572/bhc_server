@@ -1,0 +1,120 @@
+@CHARSET "UTF-8";
+*{		
+	margin:0px;
+	padding:0px;
+}
+ul,ol{list-style-type:none;}
+.fl { float:left; }
+.fr { float:right; }
+.c { clear:both;}
+/*footer*/
+.footer{
+	width: 100%;
+	float: left;
+	height: 100px;
+}
+.footer-line{
+	height:15px;
+	width: 100%;
+	background-color:#f5f5f5 ;
+}
+.link a{
+	text-decoration:none;
+	margin-left:15px;
+	font-size: 14px; 
+	font-family: 宋体;
+}
+/*颜色变化显示*/
+.link span{
+	margin-left:15px;
+	color: #888888;
+	font-size: 14px; 
+}
+.link-copyright{
+	float: left;
+	margin-left: 160px;
+	margin-top: 25px;
+}
+.share-link,.footer-desc{
+	float: left;
+	line-height: 100px;
+	margin-left: 50px;
+}
+.footer-desc,.copyright{
+	font-size: 14px; 
+	font-family: 宋体;
+	color: #888888;
+}
+.share-link{
+	margin-left: 100px;
+	color: #888888;
+	font-size: 18px; 
+}
+.weibo{
+	vertical-align:middle;
+	background: url(images/weibo.png) no-repeat;
+	float:left;
+	display:block;
+	width: 28px;
+	height: 25px;	
+}
+.weibo:hover {
+	background: url(images/weibo_select.png) no-repeat;
+	float:left;
+	display:block;
+	width: 28px;
+	height: 25px;
+}
+.share-link span{
+	margin-left:25px;
+	float:left;
+}
+.share-link a{
+	margin-top: 38px;
+	margin-left: 30px;
+}
+.qq{
+	background: url(images/qq.png) no-repeat;
+	float:left;
+	display:block;
+	width: 28px;
+	height: 25px;
+}
+.qq:hover {
+	float:left;
+	display:block;
+	background: url(images/qq_select.png) no-repeat;
+	width: 28px;
+	height: 25px;
+}
+/*简单的故事开始*/ 
+.section{
+	height: 768px;min-height: 768px;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center center;
+
+}
+/*导航*/
+.nav-li{
+width: 21px;
+height: 21px;
+margin-top:15px;
+background: url("point.png") no-repeat scroll 5px 5px;
+}
+.hov{
+width: 21px;
+height: 21px;
+margin-top:15px;
+background: url("point.png") no-repeat scroll 5px 5px;
+background-position: 0 bottom;
+}
+.scene_xty{
+	background-image: url('image_2_1.png');
+}
+.scene_xyj{
+	background-image: url('image_3_1.png');
+}
+.scene_ewq{
+	background-image: url('image_4_1.png');
+}
