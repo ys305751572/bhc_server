@@ -35,7 +35,7 @@ public class DoctorContorller extends GenericEntityController<Doctor, Doctor, Do
 
 	private static final String DOCTOR_LIST = "management/aol/doctorMgr/doctorList"; // 医师列表页面
 	private static final String DOCTOR_ADD = "management/aol/doctorMgr/doctorAdd"; // 医师新增页面
-	private static final String DOCTOR_EDIT = "management/aol/doctorMgr/doctorEdit"; // 医师编辑页面
+	private static final String DOCTOR_EDIT = "management/aol/doctorMgr/doctorAdd"; // 医师编辑页面
 	private static final String DOCTORD_DETAIL = "management/aol/doctorMgr/doctorDetail"; // 医师详情页面
 	
 	@Autowired
@@ -55,12 +55,15 @@ public class DoctorContorller extends GenericEntityController<Doctor, Doctor, Do
 		return DOCTOR_LIST;
 	}
 	
-	public JSONResponse createDoctor(Doctor doctor) {
-		this.getEntityManager().save(doctor);
-		return successed(doctor);
-	}
-	
-	public String pageEdit() {
+	@RequestMapping(value = "editDoctor", method = RequestMethod.GET)
+	public String pageEdit(String id,Model model) {
+		
+		try {
+			Doctor doctor = iDoctorManager.findById(id);
+			model.addAttribute("doctor", doctor);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return DOCTOR_EDIT;
 	} 
 	
@@ -71,12 +74,7 @@ public class DoctorContorller extends GenericEntityController<Doctor, Doctor, Do
 	 */
 	@RequestMapping(value = "saveDoctor", method = RequestMethod.POST)
 	public String modifyDoctor(Doctor doctor) {
-		if(doctor.getId() != null) {
-			iDoctorManager.update(doctor);
-		}
-		else {
-			iDoctorManager.save(doctor);
-		}
+		iDoctorManager.save(doctor);
 		return DOCTOR_LIST;
 	}
 	

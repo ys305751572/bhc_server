@@ -205,8 +205,43 @@ Date.prototype.format = function(format){
 				
 				// 新增医师
 				function addDoctor() {
-					console.log("addDoctor");
 					window.location.href = "${contextPath}/management/doctor/pageAdd";
+				}
+				
+				function editDoctor(id) {
+					if(!id){
+						if(!dataTableObj.getSelectedRow()){
+							jAlert('请选择要查看的用户','提示');
+							return;
+						} else{
+							//判断用户是否能查找到数据
+							$.ajax({
+					    		url:"${contextPath}/management/doctor/sfDoctorInfo?id="+dataTableObj.getSelectedRow().id,
+					    		type:'post',
+								cache:false,
+								success:function(response){
+									if(response == "无法查询"){
+										jAlert('无法编辑','提示');
+									}else{
+										window.location.href = "${contextPath}/management/doctor/editDoctor?id="+dataTableObj.getSelectedRow().id;
+									}
+								}
+					   		 });	
+						}
+					} else {
+						$.ajax({
+					    		url:"${contextPath}/management/doctor/sfDoctorInfo?id="+id,
+					    		type:'post',
+								cache:false,
+								success:function(response){
+									if(response == "无法查询"){
+										jAlert('无法编辑','提示');
+									}else{
+										window.location.href = "${contextPath}/management/doctor/editDoctor?id="+id;
+									}
+								}
+					   		 });
+					}
 				}
 				
 			    //查看用户信息
@@ -256,7 +291,7 @@ Date.prototype.format = function(format){
 				<div class="breadcrumb">
 					<li><a href="javascript:addDoctor();" class="button button-rounded button-flat button-tiny" style="width: 120px;"><i class="icon-6" style="width: 20px; height: 20px; line-height: 20px;"></i>&nbsp;新增医师</a></li>
 					<li style="color: #c5c5c5">|</li>
-					<li><a href="#" class="button button-rounded button-flat button-tiny" style="width: 100px;"><i class="icon-2" style="width: 20px; height: 20px; line-height: 20px;"></i>&nbsp;修改姓名</a></li>
+					<li><a href="javascript:editDoctor();" class="button button-rounded button-flat button-tiny" style="width: 100px;"><i class="icon-2" style="width: 20px; height: 20px; line-height: 20px;"></i>&nbsp;编辑医师</a></li>
 					<li style="color: #c5c5c5">|</li>
 					<li><a href="#" class="button button-rounded button-flat button-tiny" style="width: 100px;"><i class="icon-7" style="width: 20px; height: 20px; line-height: 20px;"></i>&nbsp;添加设备</a></li>
 				</div>

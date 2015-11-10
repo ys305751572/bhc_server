@@ -53,19 +53,11 @@
 </style>
 		
 <script type="text/javascript">		
-var result = '${msg}';
-var message = '${messages}';
 $(document).ready(function(){
-	
-	if(message){
-		var sendees = '${messages.messagesSendee}';
-		$('#messagesSendee').combo('setValues', sendees.split(","));
-		CKEDITOR.instances.detail.setData("${messages.detail}");
-	}
+	CKEDITOR.instances.detail.setData("${doctor.detail}");
 });
 
 function submitFrom(){
-	
 	
 	var detail = CKEDITOR.instances.detail.getData();
 	$("#doctorForm").submit();
@@ -113,8 +105,8 @@ function submitFrom(){
 											  <label class="control-label" style="width:60px;" for="gender">性别</label>
 											  <div class="controls" style="margin-left: 80px;">
 											  		<select id="gender" name="gender"  style="width: 120px;">
-														<option <c:if test="${gender=='1'}">selected="selected" </c:if> value="1">男</option>
-														<option <c:if test="${gender=='2'}">selected="selected" </c:if> value="2">女</option>
+														<option <c:if test="${doctor.gender=='1'}">selected="selected" </c:if> value="1">男</option>
+														<option <c:if test="${doctor.gender=='2'}">selected="selected" </c:if> value="2">女</option>
 													</select>
 											  </div>
 											</div>

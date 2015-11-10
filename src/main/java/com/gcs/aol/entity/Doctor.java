@@ -10,6 +10,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
 
+import com.google.common.annotations.Beta;
+
 // 医师专家PO
 @Entity
 @Table(name = "t_doctor")
@@ -59,7 +61,18 @@ public class Doctor {
 
 	@Column(name = "HOSPITAL") 
 	private String hospital; // 所在医院
+	
+	@Column(name = "REWARD")
+	private String reward; // 所获奖励
 	 
+	public String getReward() {
+		return reward;
+	}
+
+	public void setReward(String reward) {
+		this.reward = reward;
+	}
+
 	public String getHospital() {
 		return hospital;
 	}
