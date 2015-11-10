@@ -402,8 +402,8 @@
 					<li id="menu6">
                         <a href="#" name="firstMenu"><span class="aol aol-users"></span> 医师管理<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li id="menu5_1" onclick="changeMenu(this.id,'用户管理&nbsp;>&nbsp;医师信息查询')">
-                                <a href="${contextPath}/management/doctor/page" target="mainIFrame">医师信息查询</a>
+                            <li id="menu6_1" onclick="changeMenu(this.id,'医师管理&nbsp;>&nbsp;医师信息查询')">
+                                <a href="${contextPath}/management/doctor/paegList" target="mainIFrame">医师信息查询</a>
                             </li>
                         </ul>
                     </li>
@@ -411,19 +411,19 @@
 					<li id="menu7">
                         <a href="#" name="firstMenu"><span class="aol aol-device"></span> 设备管理<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li id="menu6_1" onclick="changeMenu(this.id,'设备管理&nbsp;>&nbsp;设备信息查询')">
+                            <li id="menu7_1" onclick="changeMenu(this.id,'设备管理&nbsp;>&nbsp;设备信息查询')">
                                 <a href="${contextPath}/management/devices/deviceslist" target="mainIFrame">设备信息查询</a>
                             </li>
-                            <li id="menu6_2" onclick="changeMenu(this.id,'设备管理&nbsp;>&nbsp;设备批量导入')">
+                            <li id="menu7_2" onclick="changeMenu(this.id,'设备管理&nbsp;>&nbsp;设备批量导入')">
                                 <a href="${contextPath}/management/devices/uploaddevice" target="mainIFrame">设备批量导入</a>
                             </li>
-                            <li id="menu6_3" onclick="changeMenu(this.id,'设备管理&nbsp;>&nbsp;机器码查询')">
+                            <li id="menu7_3" onclick="changeMenu(this.id,'设备管理&nbsp;>&nbsp;机器码查询')">
                                 <a href="${contextPath}/management/devices/gotoqueryDevice" target="mainIFrame">机器码查询</a>
                             </li>
-                            <li id="menu6_4" onclick="changeMenu(this.id,'设备管理&nbsp;>&nbsp;测量数据查询')">
+                            <li id="menu7_4" onclick="changeMenu(this.id,'设备管理&nbsp;>&nbsp;测量数据查询')">
                                 <a href="${contextPath}/management/devices/querymeasurelist" target="mainIFrame">测量数据查询</a>
                             </li>
-                            <li id="menu6_5" onclick="changeMenu(this.id,'设备管理&nbsp;>&nbsp;设备转移')">
+                            <li id="menu7_5" onclick="changeMenu(this.id,'设备管理&nbsp;>&nbsp;设备转移')">
                                 <a href="${contextPath}/management/devices/gotoDevTransfer" target="mainIFrame">设备转移</a>
                             </li>
                         </ul>
@@ -432,10 +432,10 @@
 					<li id="menu8">
                         <a href="#" name="firstMenu"><span class="aol aol-agent"></span> 代理商管理<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li id="menu7_1" onclick="changeMenu(this.id,'代理商管理&nbsp;>&nbsp;代理商管理')">
+                            <li id="menu8_1" onclick="changeMenu(this.id,'代理商管理&nbsp;>&nbsp;代理商管理')">
                                 <a href="${contextPath}/management/organise/organiseslist" target="mainIFrame">代理商管理</a>
                             </li>
-                            <li id="menu7_2" onclick="changeMenu(this.id,'代理商管理&nbsp;>&nbsp;图片广告管理')">
+                            <li id="menu8_2" onclick="changeMenu(this.id,'代理商管理&nbsp;>&nbsp;图片广告管理')">
                                 <a href="${contextPath}/management/imageads/adslist" target="mainIFrame">图片广告管理</a>
                             </li>
                         </ul>
@@ -444,10 +444,10 @@
 					<li id="menu9">
                         <a href="#" name="firstMenu"><span class="aol aol-system"></span> 系统管理<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li id="menu8_1" onclick="changeMenu(this.id,'系统管理&nbsp;>&nbsp;基本信息')">
+                            <li id="menu9_1" onclick="changeMenu(this.id,'系统管理&nbsp;>&nbsp;基本信息')">
                                 <a href="${contextPath}/management/organise/viewowninfo" target="mainIFrame">基本信息</a>
                             </li>
-                            <li id="menu8_2" onclick="changeMenu(this.id,'系统管理&nbsp;>&nbsp;日志信息查询')">
+                            <li id="menu9_2" onclick="changeMenu(this.id,'系统管理&nbsp;>&nbsp;日志信息查询')">
                                 <a href="${contextPath}/management/loginfo/logslist" target="mainIFrame">日志信息查询</a>
                             </li>
                         </ul>

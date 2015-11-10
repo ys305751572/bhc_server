@@ -45,7 +45,7 @@ public class Doctor {
 	private Byte gender; // 性别 1:男 2:女
 
 	@Column(name = "LEVEL")
-	private Integer level;
+	private String level;
 
 	@Column(name = "BIRTHDAY")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -56,6 +56,17 @@ public class Doctor {
 
 	@Column(name = "TYPE")
 	private Byte type; // 类型 0:专家 1:家庭医生
+
+	@Column(name = "HOSPITAL") 
+	private String hospital; // 所在医院
+	 
+	public String getHospital() {
+		return hospital;
+	}
+
+	public void setHospital(String hospital) {
+		this.hospital = hospital;
+	}
 
 	public String getId() {
 		return id;
@@ -129,11 +140,11 @@ public class Doctor {
 		this.gender = gender;
 	}
 
-	public Integer getLevel() {
+	public String getLevel() {
 		return level;
 	}
 
-	public void setLevel(Integer level) {
+	public void setLevel(String level) {
 		this.level = level;
 	}
 

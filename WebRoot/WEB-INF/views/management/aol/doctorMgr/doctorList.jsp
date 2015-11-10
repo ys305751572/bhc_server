@@ -65,11 +65,11 @@ Date.prototype.format = function(format){
 				});
 				var delId = "";
 				
-				var columns = [ {'text':'用户姓名','dataIndex':'name','width':'70px'},
-							    {'text':'设备类型','dataIndex':'detail','width':'60px'},
-							    {'text':'测量状态','dataIndex':'mobile','width':'60px'},
-							    {'text':'测量收缩压','dataIndex':'gender','width':'60px'},
-							    {'text':'高压状态','dataIndex':'level','width':'50px'},
+				var columns = [ {'text':'医生名字','dataIndex':'name','width':'70px'},
+							    {'text':'所在科室','dataIndex':'depart','width':'60px'},
+							    {'text':'手机号','dataIndex':'mobile','width':'60px'},
+							    {'text':'性别','dataIndex':'gender','render': genderRender,'width':'60px'},
+							    {'text':'医师等级','dataIndex':'level','width':'50px'},
 							    {'text':'操作','dataIndex':'userxx','width':'110px','render':caoZuoRender}
 							    ];
 				var arrayObj = [];
@@ -99,6 +99,15 @@ Date.prototype.format = function(format){
 				    });
 					
 				});
+				
+				function genderRender(row) {
+					if(row.gender == 1) {
+						return '男';
+					}
+					else {
+						return '女';
+					}
+				}
 
 				function measureNameRender(row){
 					var _measureName = "";
@@ -126,7 +135,7 @@ Date.prototype.format = function(format){
 					return '<div align="left">' + mstype + '</div>';
 				}
 				function caoZuoRender(row){
-					return "<button id='btnSendTop' name='btnSendTop'  style='width:80px;cursor:pointer;'type='button' class='btn btn-primary' onclick='viewUserInfo(\""+row.userId+"\")'></i>查看信息</button>"
+					return "<button id='btnSendTop' name='btnSendTop'  style='width:80px;cursor:pointer;'type='button' class='btn btn-primary' onclick='viewUserInfo(\""+row.id+"\")'></i>查看信息</button>"
 				}
 				//自定义渲染的回调函数--测量状态
 				function measureStateRender(row){
@@ -194,37 +203,43 @@ Date.prototype.format = function(format){
 					dataTableObj.search(arrayObj);
 				}
 				
+				// 新增医师
+				function addDoctor() {
+					console.log("addDoctor");
+					window.location.href = "${contextPath}/management/doctor/pageAdd";
+				}
+				
 			    //查看用户信息
-			    function viewUserInfo(userId){
-					if(!userId){
+			    function viewUserInfo(id){
+					if(!id){
 						if(!dataTableObj.getSelectedRow()){
 							jAlert('请选择要查看的用户','提示');
 							return;
 						} else{
 							//判断用户是否能查找到数据
 							$.ajax({
-					    		url:"${contextPath}/management/aoluser/sfUserInfo?userId="+dataTableObj.getSelectedRow().userId,
+					    		url:"${contextPath}/management/doctor/sfDoctorInfo?id="+dataTableObj.getSelectedRow().id,
 					    		type:'post',
 								cache:false,
 								success:function(response){
 									if(response == "无法查询"){
 										jAlert('无法查询','提示');
 									}else{
-										window.location.href = "${contextPath}/management/aoluser/viewUserInfo?userId="+dataTableObj.getSelectedRow().userId;
+										window.location.href = "${contextPath}/management/doctor/viewDoctorInfo?id="+dataTableObj.getSelectedRow().id;
 									}
 								}
 					   		 });	
 						}
 					} else {
 						$.ajax({
-					    		url:"${contextPath}/management/aoluser/sfUserInfo?userId="+userId,
+					    		url:"${contextPath}/management/doctor/sfDoctorInfo?id="+id,
 					    		type:'post',
 								cache:false,
 								success:function(response){
 									if(response == "无法查询"){
 										jAlert('无法查询','提示');
 									}else{
-										window.location.href = "${contextPath}/management/aoluser/viewUserInfo?userId="+userId;
+										window.location.href = "${contextPath}/management/doctor/viewDoctorInfo?id="+id;
 									}
 								}
 					   		 });
@@ -237,6 +252,16 @@ Date.prototype.format = function(format){
 		<!--detail start-->
 		<div class="row-fluid z-ulnone" id="proList">
 			<div class="box span12">			
+				<!-- 操作按钮start -->
+				<div class="breadcrumb">
+					<li><a href="javascript:addDoctor();" class="button button-rounded button-flat button-tiny" style="width: 120px;"><i class="icon-6" style="width: 20px; height: 20px; line-height: 20px;"></i>&nbsp;新增医师</a></li>
+					<li style="color: #c5c5c5">|</li>
+					<li><a href="#" class="button button-rounded button-flat button-tiny" style="width: 100px;"><i class="icon-2" style="width: 20px; height: 20px; line-height: 20px;"></i>&nbsp;修改姓名</a></li>
+					<li style="color: #c5c5c5">|</li>
+					<li><a href="#" class="button button-rounded button-flat button-tiny" style="width: 100px;"><i class="icon-7" style="width: 20px; height: 20px; line-height: 20px;"></i>&nbsp;添加设备</a></li>
+				</div>
+				<!-- 操作按钮end -->
+			
 				<div class="box-content"   style="padding: 0px;border: 0px">
 					<!-- 搜索条件start -->
 					<div class="modal-header" style="float: left;width: 100%; ">

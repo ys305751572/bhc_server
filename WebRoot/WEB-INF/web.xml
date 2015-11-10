@@ -96,10 +96,6 @@
     <welcome-file>/management/index</welcome-file>
   </welcome-file-list>
   <error-page>
-    <exception-type>java.lang.Throwable</exception-type>
-    <location>/WEB-INF/views/error/500.jsp</location>
-  </error-page>
-  <error-page>
     <error-code>500</error-code>
     <location>/WEB-INF/views/error/500.jsp</location>
   </error-page>

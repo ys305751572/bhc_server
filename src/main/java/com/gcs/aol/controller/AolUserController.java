@@ -76,7 +76,6 @@ public class AolUserController extends GenericEntityController<AolUser, AolUser,
 	 * @param request
 	 * @return
 	 */
-	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/getUserList", method=RequestMethod.POST)
 	@ResponseBody
 	public JSONResponse getUserList(@RequestBody JSONParam[] params,HttpServletRequest request) {

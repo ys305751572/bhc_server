@@ -15,32 +15,15 @@ import com.gcs.sysmgr.service.impl.GenericManagerImpl;
 
 @Service
 public class DoctorManagerImpl extends GenericManagerImpl<Doctor, DoctorDAO> implements IDoctorManager {
-
-	@Autowired
-	private EntityManagerFactory em;
 	
 	@Autowired
 	private DoctorDAO doctorDAO;
-	
-	@Override
-	public int add(Doctor doctor) throws Exception {
-		
-		return 0;
-	}
-
-	@Override
-	public int detele(String id) throws Exception {
-		return 0;
-	}
-
-	@Override
-	public int modify(Doctor doctor) throws Exception {
-		return 0;
-	}
+	@Autowired
+	private EntityManagerFactory em;
 
 	@Override
 	public Doctor findById(String id) throws Exception {
-		return null;
+		return doctorDAO.findById(id);
 	}
 
 	/**

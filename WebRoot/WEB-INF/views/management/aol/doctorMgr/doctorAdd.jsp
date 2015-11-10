@@ -56,81 +56,21 @@
 var result = '${msg}';
 var message = '${messages}';
 $(document).ready(function(){
-	//提示
-	if(result){
-		var bb = result.substring(0, 1);
-		var tt = result.substring(2, result.length);
-		if(bb == "0"){
-			jAlert(tt,'提示', function(){
-				window.location.href = "${contextPath}/management/messages/draftboxlist";
-			});
-		} else if(bb == "1"){
-			jAlert(tt,'提示', function(){
-				window.location.href = "${contextPath}/management/messages/sendedlist";
-			});
-		} else {
-			jAlert(tt,'提示');
-		}
-	};
-	var infoTree = $('#messagesSendee').combotree('tree');
-	infoTree.tree({
-		onCheck: function(node, checked){
-			var infoChoose = infoTree.tree('getChecked');
-			var names = "";
-			var ids = "";
-			for(var i=0;i<infoChoose.length;i++){
-				var checknode = infoChoose[i];
-				var nodeid = checknode.id;
-				if(nodeid.substr(0, 2) == "U_"){
-					names = names + checknode.text + ",";
-					ids = ids + nodeid + ",";
-				}
-			}
-			$("input.combo-text").val(names);
-			$('#messagesSendee').combo('setValues', ids.split(","));
-		}
-	});
 	
 	if(message){
 		var sendees = '${messages.messagesSendee}';
 		$('#messagesSendee').combo('setValues', sendees.split(","));
-		CKEDITOR.instances.messagesContent.setData("${messages.messagesContent}");
+		CKEDITOR.instances.detail.setData("${messages.detail}");
 	}
 });
 
-function submitMessageFrom(bb){
-	var sendssnames = $('#messagesSendee').combo('getText');
-	$('#messagesSendeeName').val(sendssnames);
-		
-	if(bb=="send"){
-		var messagesSendee = $('#messagesSendee').combo('getValues');
-		var messagesTitle = $('#messagesTitle').val();
-		var messagesContent = CKEDITOR.instances.messagesContent.getData();
-		
-		if(messagesSendee == ""){
-			jAlert('请填写收件人！','提示');
-		} else if(messagesTitle == ""){
-			jAlert('请填写主题！','提示');
-		} else if(messagesContent == ""){
-			jAlert('请填写正文！','提示');
-		} else {
-			$('#saveORsend').val(bb);
-		}
-	} else if(bb=="save"){
-		$('#saveORsend').val(bb);
-	} else{
-	}
-	$('#messageForm').submit();
+function submitFrom(){
+	
+	
+	var detail = CKEDITOR.instances.detail.getData();
+	$("#doctorForm").submit();
 }
 
-function check_task(){
-	var saveORsend = $('#saveORsend').val();
-	if(saveORsend == ""){
-		return false;
-    }
-    
-    return true;
-}
 
 </script>
 </head>
@@ -139,12 +79,14 @@ function check_task(){
 	<div class="row-fluid">
 		<div id="content" class="span12">
 			<div class="row-fluid z-ulnone">
-				<form class="form-horizontal" method="post" id="messageForm" name="messageForm" action="${contextPath}/management/messages/saveAppMessage" onsubmit="return check_task()" enctype="multipart/form-data">
+				<form class="form-horizontal" method="post" id="doctorForm" name="doctorForm" action="${contextPath}/management/doctor/saveDoctor" enctype="multipart/form-data">
 					<!--box span12 start-->
 					<div class="box span12">
 						<div class="box-header well z-h2">
 							<div class="controls" style="margin-left: 10px;">
-								<button id="btnSendTop" name="btnSendTop" type="button" class="btn btn-primary" onclick="submitMessageFrom('send');">发送APP</button>
+								<h2>
+									新增医师
+								</h2>
 							</div>
 						</div>
 						
@@ -154,15 +96,13 @@ function check_task(){
 							<!--z-informa2 start-->
 							<div class="z-informa2" style="margin-bottom: 10px;">
 								<table>
+									<input type="hidden" id="id" name="id" value=${doctor.id}>
 									<tr>
 										<td>
-											<div class="control-group" style="margin-top: 10px;">
-											  <label class="control-label" style="width:60px;" for="messagesSendee">收件人</label>
+											<div class="control-group">
+											  <label class="control-label" style="width:60px;" for="name">医师名称</label>
 											  <div class="controls" style="margin-left: 80px;">
-											  	  <input id="messagesId" name="messagesId" value="${messages.messagesId}" type="hidden"/>
-											  	  <input id="messagesSendeeName" name="messagesSendeeName" value="${messages.messagesSendeeName}" type="hidden"/>
-											  	  <input id="sendeeType" name="sendeeType" value="1" type="hidden"/>
-											  	  <select id="messagesSendee" name="messagesSendee" class="easyui-combotree" style="width: 880px;" data-options="url:'${contextPath}/management/messages/getOrgAndUserTreeData', multiple:true, required:true "></select>
+											  	  <input type="text" id="name" name="name" value="${doctor.name}" style="width:870px;" placeholder="请填写医师名称" maxlength="1000"/>
 											  </div>
 											</div>
 										</td>
@@ -170,9 +110,12 @@ function check_task(){
 									<tr>
 										<td>
 											<div class="control-group">
-											  <label class="control-label" style="width:60px;" for="messagesTitle">主题</label>
+											  <label class="control-label" style="width:60px;" for="gender">性别</label>
 											  <div class="controls" style="margin-left: 80px;">
-											  	  <input type="text" id="messagesTitle" name="messagesTitle" value="${messages.messagesTitle}" style="width:870px;" placeholder="请填写主题" maxlength="1000"/>
+											  		<select id="gender" name="gender"  style="width: 120px;">
+														<option <c:if test="${gender=='1'}">selected="selected" </c:if> value="1">男</option>
+														<option <c:if test="${gender=='2'}">selected="selected" </c:if> value="2">女</option>
+													</select>
 											  </div>
 											</div>
 										</td>
@@ -180,10 +123,60 @@ function check_task(){
 									<tr>
 										<td>
 											<div class="control-group">
-											  <label class="control-label" style="width:60px;" for="messagesContent">正文</label>
+											  <label class="control-label" style="width:60px;" for="level">职业</label>
 											  <div class="controls" style="margin-left: 80px;">
-											  	  <textarea id="messagesContent" name="messagesContent" rows="25"></textarea>
-											  	  <ckeditor:replace replace="messagesContent" basePath="${contextPath}/ckeditor/"  config="<%=settings%>"></ckeditor:replace>
+											  	  <input type="text" id="level" name="level" value="${doctor.level}" style="width:870px;" placeholder="请填写医师职业" maxlength="1000"/>
+											  </div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="control-group">
+											  <label class="control-label" style="width:60px;" for="depart">科室</label>
+											  <div class="controls" style="margin-left: 80px;">
+											  	  <input type="text" id="depart" name="depart" value="${doctor.depart}" style="width:870px;" placeholder="请填写医师科室" maxlength="1000"/>
+											  </div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="control-group">
+											  <label class="control-label" style="width:60px;" for="hospital">所在医院</label>
+											  <div class="controls" style="margin-left: 80px;">
+											  	  <input type="text" id="hospital" name="hospital" value="${doctor.hospital}" style="width:870px;" placeholder="请填写医师所在医院" maxlength="1000"/>
+											  </div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="control-group">
+											  <label class="control-label" style="width:60px;" for="reward">所获奖励</label>
+											  <div class="controls" style="margin-left: 80px;">
+											  	  <input type="text" id="reward" name="reward" value="${doctor.reward}" style="width:870px;" placeholder="请填写医师所获奖励" maxlength="1000"/>
+											  </div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="control-group">
+											  <label class="control-label" style="width:60px;" for="domain">擅长领域</label>
+											  <div class="controls" style="margin-left: 80px;">
+											  	  <input type="text" id="reward" name="domain" value="${doctor.domain}" style="width:870px;" placeholder="请填写医师擅长领域" maxlength="1000"/>
+											  </div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="control-group">
+											  <label class="control-label" style="width:60px;" for="detail">正文</label>
+											  <div class="controls" style="margin-left: 80px;">
+											  	  <textarea id="detail" name="detail" rows="25"></textarea>
+											  	  <ckeditor:replace replace="detail" basePath="${contextPath}/ckeditor/"  config="<%=settings%>"></ckeditor:replace>
 											  </div>
 											</div>
 										</td>
@@ -193,7 +186,7 @@ function check_task(){
 											<div class="control-group">
 												<div class="controls" style="margin-left: 20px;">
 													<input type="hidden" id="saveORsend" name="saveORsend" value=""/>
-													<button id="btnSendBottom" name="btnSendBottom" type="button" class="btn btn-primary" onclick="submitMessageFrom('send');">发送</button>
+													<button id="btnSendBottom" name="btnSendBottom" type="button" class="btn btn-primary" onclick="submitFrom();">保存</button>
 												</div>
 											</div>
 										</td>
