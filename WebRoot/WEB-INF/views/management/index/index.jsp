@@ -452,6 +452,15 @@
                             </li>
                         </ul>
                     </li>
+                    
+                    <li id="menu10">
+                        <a href="#" name="firstMenu"><span class="aol aol-system"></span> 集合提交测试<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li id="menu10_1" onclick="changeMenu(this.id,'系统管理&nbsp;>&nbsp;基本信息')">
+                                <a href="${contextPath}/management/question/testPage" target="mainIFrame">集合提交测试</a>
+                            </li>
+                        </ul>
+                    </li>
 				</c:when>  
 				<c:otherwise>  
 				
