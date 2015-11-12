@@ -454,10 +454,10 @@
                     </li>
                     
                     <li id="menu10">
-                        <a href="#" name="firstMenu"><span class="aol aol-system"></span> 集合提交测试<span class="fa arrow"></span></a>
+                        <a href="#" name="firstMenu"><span class="aol aol-system"></span> 检测工具题库管理<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li id="menu10_1" onclick="changeMenu(this.id,'系统管理&nbsp;>&nbsp;基本信息')">
-                                <a href="${contextPath}/management/question/testPage" target="mainIFrame">集合提交测试</a>
+                                <a href="${contextPath}/management/question/pageList" target="mainIFrame">检测工具题库信息查询</a>
                             </li>
                         </ul>
                     </li>
@@ -482,7 +482,7 @@
 					 	<iframe name="mainIFrame" id="mainIFrame" src="${contextPath}/management/home/homePage" frameborder="0" scrolling="no" style="width: 100%; height: 400px;" allowtransparency="true"></iframe>
 			         </c:when>  
 					 <c:otherwise>  
-					 	<iframe name="mainIFrame" id="mainIFrame" src="${contextPath}/management/home/orgHomePage" frameborder="0" scrolling="no" style="width: 100%; height: 400px;" allowtransparency="true"></iframe>
+					 	<iframe name="mainIFrame" id="mainIFrame" src="${contextPath}/management/home/orgHomePage" frameborder="0" scrolling="auto" style="width: 100%; height: 400px;" allowtransparency="true"></iframe>
 					 </c:otherwise>
 			     </c:choose> 
 		         

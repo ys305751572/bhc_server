@@ -116,7 +116,7 @@ public class DoctorContorller extends GenericEntityController<Doctor, Doctor, Do
 	 */
 	@RequestMapping(value = "page",method = RequestMethod.POST)
 	@ResponseBody
-	public JSONResponse pageList(@RequestBody JSONParam[] params) {
+	public JSONResponse findAll(@RequestBody JSONParam[] params) {
 		
 		HashMap<String, String> paramMap = (HashMap<String, String>) convertToMap(params);
 		PageParameters pp = PageUtil.getParameter(paramMap, "");
