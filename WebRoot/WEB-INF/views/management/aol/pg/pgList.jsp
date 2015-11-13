@@ -67,14 +67,15 @@ Date.prototype.format = function(format){
 				var delId = "";
 				
 				var columns = [ {'text':'标题','dataIndex':'title','width':'160px'},
-							    {'text':'时间','dataIndex':'createTime','render':createtimeRender,'width':'100px'},
-								{'text':'操作','dataIndex':'status','width':'110px','render':caoZuoRender}
+				                {'text':'时间','dataIndex':'type','render':typeRender,'width':'100px'},
+							    {'text':'时间','dataIndex':'createDate','render':createtimeRender,'width':'100px'}
+							    
 							    ];
 				var arrayObj = [];
 				var dataTableObj ;
 				$(function() {
 					dataTableObj  = new czTools.dataTable({"columns":columns,"render":"adsListDataTable",
-												"url":"${contextPath}/management/question/findAll",
+												"url":"${contextPath}/management/pg/findAll",
 												"para":arrayObj,
 												"autoIframeHeight":false,
 												"showIndex":true,
@@ -137,23 +138,19 @@ Date.prototype.format = function(format){
 					}
 				}
 				
-				function adsStateRender(row){
-					var adsstate = "";
-					if(row.adsState == "0"){
-						adsstate = "未发布";
-					} else if(row.adsState == "1"){
-						adsstate = "已发布";
-					} else {
-						adsstate = "";
+				function typeRender(row){
+					if(row.type == 0) {
+						return "病理";
 					}
-
-					return adsstate;
+					else {
+						return "讲座";
+					}
 				}
 
 				function createtimeRender(row){
 					var regtime = "";
-					if(row.createTime){
-						regtime = new Date(row.createTime).format("yyyy-MM-dd hh:mm:ss")
+					if(row.createDate){
+						regtime = new Date(row.createDate).format("yyyy-MM-dd hh:mm:ss")
 					}
 					return regtime;
 				}
@@ -167,56 +164,43 @@ Date.prototype.format = function(format){
 					dataTableObj.search(arrayObj);
 				}
 
-				function addAds(id){
-					window.location.href = "${contextPath}/management/question/pageQuestionAdd?tid=" + id
+				function addpg(){
+					window.location.href = "${contextPath}/management/pg/pageAdd";
 				}
 				
-				function detailAds(id) {
-					window.location.href = "${contextPath}/management/question/pageQuestionDetail?tid=" + id;
-				}
-				
-				function addpc(){
-					window.location.href = "${contextPath}/management/question/pageAdd";
-				}
 
-				function editpc(){
+				function editpg(){
 					if(!dataTableObj.getSelectedRow()){
 						jAlert('请选择要修改的记录','提示');
 						return;
 					} else {
-						window.location.href = "${contextPath}/management/question/pageEdit?id="+dataTableObj.getSelectedRow().id;
+						window.location.href = "${contextPath}/management/pg/pageEdit?id="+dataTableObj.getSelectedRow().id;
 					}
 				}
 
-				function deletepc(){
+				function searchBtnClick(){
+					var arrayObj = [
+						
+					];
+					dataTableObj.search(arrayObj);
+				}
+				
+				function deletepg(){
 					if(!dataTableObj.getSelectedRow()){
 						jAlert('请选择要删除的记录','提示');
 						return;
 					} else {
-						var imageadsId = dataTableObj.getSelectedRow().imageadsId;
+						var id = dataTableObj.getSelectedRow().id;
 						jConfirm('是否确认删除该广告？',"提示",function(r){
 							if(r) { 
-								$.post("${contextPath}/management/question/delete",{"id":id},function(result){
+								$.post("${contextPath}/management/pg/delete",{"id":id},function(result){
+									console.log("sdsssssss:" + result.success);
 									if(result.success){
-										window.location.href = "${contextPath}/management/question/pageList";
+										searchBtnClick();
 									}
 								});
 						 	}
 						});
-					}
-				}
-
-				function publishAds(){
-					if(!dataTableObj.getSelectedRow()){
-						jAlert('请选择要发布的广告','提示');
-						return;
-					} else {
-						if(dataTableObj.getSelectedRow().adsState == 0){
-							window.location.href = "${contextPath}/management/imageads/publishads?imageadsId="+dataTableObj.getSelectedRow().imageadsId;
-						} else {
-							jAlert('该广告已发布无法再次发布','提示');
-							return;
-						}
 					}
 				}
 		</script>
@@ -227,11 +211,11 @@ Date.prototype.format = function(format){
 			<div class="box span12">			
 				<!-- 操作按钮start -->
 				<div class="breadcrumb">
-					<li><a href="javascript:addpc();" class="button button-rounded button-flat button-tiny" style="width: 60px;"><i class="icon-1" style="width: 20px; height: 20px; line-height: 20px;"></i>&nbsp;新增</a></li>
+					<li><a href="javascript:addpg();" class="button button-rounded button-flat button-tiny" style="width: 60px;"><i class="icon-1" style="width: 20px; height: 20px; line-height: 20px;"></i>&nbsp;新增</a></li>
 					<li style="color: #c5c5c5">|</li>
-					<li><a href="javascript:editpc();" class="button button-rounded button-flat button-tiny" style="width: 60px;"><i class="icon-2" style="width: 20px; height: 20px; line-height: 20px;"></i>&nbsp;修改</a></li>
+					<li><a href="javascript:editpg();" class="button button-rounded button-flat button-tiny" style="width: 60px;"><i class="icon-2" style="width: 20px; height: 20px; line-height: 20px;"></i>&nbsp;修改</a></li>
 					<li style="color: #c5c5c5">|</li>
-					<li><a href="javascript:deletepc();" class="button button-rounded button-flat button-tiny" style="width: 60px;"><i class="icon-3" style="width: 20px; height: 20px; line-height: 20px;"></i>&nbsp;删除</a></li>
+					<li><a href="javascript:deletepg();" class="button button-rounded button-flat button-tiny" style="width: 60px;"><i class="icon-3" style="width: 20px; height: 20px; line-height: 20px;"></i>&nbsp;删除</a></li>
 					<!-- 
 					<li style="color: #c5c5c5">|</li>
 					<li><a href="javascript:publishAds();" class="button button-rounded button-flat button-tiny" style="width: 60px;"><i class="icon-13" style="width: 20px; height: 20px; line-height: 20px;"></i>&nbsp;发布</a></li>

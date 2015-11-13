@@ -63,7 +63,7 @@ body {
 <script type="text/javascript">
     var index =0;
 	$(document).ready(function() {
-		$("#index1").html(++index);
+		++index
 	});
 
 	function submitFrom() {
@@ -76,7 +76,7 @@ body {
 		var questionHtml = "";
 		questionHtml += "<div id=div"+ index +">";
 		questionHtml += "<tr><td><div class=\"control-group\"><label class=\"control-label\" style=\"width: 60px;\"for=\"level\">题号</label>";
-		questionHtml += "<div class=\"controls\" style=\"margin-left: 80px;\"><label id=\"label"+ index +"\">"+ index +"</label></div></div></td></tr>";
+		questionHtml += "<div class=\"controls\" style=\"margin-left: 80px;\"><label id=\"label"+index+"\">"+ index +"</label><input type=\"hidden\" id=\"questions["+ index +"].qno\" name=\"questions["+ index + "].qno\" value=\"" + index + "\"/></div></div></td></tr>";
 		
 		questionHtml += "<tr><td><div class=\"control-group\"><label class=\"control-label\" style=\"width: 60px;\"for=\"level\">题目</label>";
 		questionHtml += "<div class=\"controls\" style=\"margin-left: 80px;\"><input type=\"text\" id=\"questions["+ index +"].question\" name=\"questions["+ index +"].question\" value=\"\" style=\"width: 870px;\" placeholder=\"请填写题目\" maxlength=\"1000\" />";
@@ -116,6 +116,11 @@ body {
 			
 			$("#div"+ i).attr("id","div"+(i-1));
 			$("#label"+ i).attr("id","label" + (i-1));
+			$("#label"+ i).text(i-1);
+			
+			document.getElementById("questions["+ i +"].qno").setAttribute("id", "questions["+ (i-1) +"].qno");
+			document.getElementsByName("questions["+ i +"].qno")[0].setAttribute("name", "questions["+ (i-1) +"].qno");
+			document.getElementById("questions["+ (i-1) +"].qno").setAttribute("value", (i-1));
 			
 			document.getElementById("questions["+ i +"].question").setAttribute("id", "questions["+ (i-1) +"].question");
 			document.getElementsByName("questions["+ i +"].question")[0].setAttribute("name", "questions["+ (i-1) +"].question");
@@ -144,9 +149,7 @@ body {
 		<div class="row-fluid" style="overflow:auto;">
 			<div id="content" class="span12" style="overflow:auto;">
 				<div class="row-fluid z-ulnone" style="overflow:auto;">
-					<form class="form-horizontal" method="post" id="testForm"
-						name="doctorForm"
-						action="${contextPath}/management/question/testList"
+					<form class="form-horizontal" method="post" id="testForm" name="doctorForm" action="${contextPath}/management/question/saveQuestions"
 						enctype="multipart/form-data">
 						<!--box span12 start-->
 						<div class="box span12" style="overflow:auto;">
@@ -158,6 +161,7 @@ body {
 
 							<!--box-content start-->
 							<div class="box-content">
+							<input type="hidden" id="tid" name="tid" value="${tidMap.tid}"/>
 							<div id="maindiv">
 								<div id="div1">
 									<tr>
@@ -166,7 +170,8 @@ body {
 												<label class="control-label" style="width: 60px;"
 													for="level">题号</label>
 												<div class="controls" style="margin-left: 80px;">
-													<label id="index1"></label>
+													<label id="label1">1</label>
+													<input type="hidden" id="questions[0].qno" name="questions[0].qno" value="1"/>
 												</div>
 											</div>
 										</td>
@@ -177,7 +182,7 @@ body {
 												<label class="control-label" style="width: 60px;"
 													for="level">题目</label>
 												<div class="controls" style="margin-left: 80px;">
-													<input type="text" id="questions[0].questions" name="questions[0].questions" value=
+													<input type="text" id="questions[0].question" name="questions[0].question" value=
 														"" style="width: 870px;" placeholder="请填写题目"
 														maxlength="1000" />
 												</div>
@@ -255,6 +260,16 @@ body {
 								</div>
 							</div>
 							<!--z-informa2 end-->
+							 <tr>
+								<td>
+									<div class="control-group">
+										<label class="control-label" for="btnSave"></label>
+										<div style="margin-left: 300px;">
+											<button id="btnSave" name="btnSave" type="submit" class="btn btn-primary">保存</button>
+										</div>
+									</div>
+								</td>
+							  </tr>
 							</div>
 							<!--box-content end-->
 						</div>

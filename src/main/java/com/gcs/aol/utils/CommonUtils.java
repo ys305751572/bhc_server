@@ -27,7 +27,8 @@ public class CommonUtils {
 	 * @return
 	 */
 	public static Attach uploadAttach(MultipartFile file, String webRoot, String attachPath ,String userId){
-		File f = new File(attachPath);
+		String path =  webRoot + attachPath;
+		File f = new File(path);
 		if(!f.exists()){
 			f.mkdirs();
 		}

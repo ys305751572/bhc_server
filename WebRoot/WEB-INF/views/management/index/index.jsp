@@ -456,8 +456,16 @@
                     <li id="menu10">
                         <a href="#" name="firstMenu"><span class="aol aol-system"></span> 检测工具题库管理<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li id="menu10_1" onclick="changeMenu(this.id,'系统管理&nbsp;>&nbsp;基本信息')">
+                            <li id="menu10_1" onclick="changeMenu(this.id,'系统管理&nbsp;>&nbsp;检测工具题库管理')">
                                 <a href="${contextPath}/management/question/pageList" target="mainIFrame">检测工具题库信息查询</a>
+                            </li>
+                        </ul>
+                    </li>
+                     <li id="menu11">
+                        <a href="#" name="firstMenu"><span class="aol aol-system"></span> 病理讲座管理<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li id="menu10_1" onclick="changeMenu(this.id,'系统管理&nbsp;>&nbsp;病理讲座管理')">
+                                <a href="${contextPath}/management/pg/pageList" target="mainIFrame">病理讲座信息查询</a>
                             </li>
                         </ul>
                     </li>

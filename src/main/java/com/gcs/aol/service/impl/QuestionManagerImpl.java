@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.gcs.aol.dao.QuestionDAO;
 import com.gcs.aol.entity.vo.Question;
+import com.gcs.aol.entity.vo.QuestionCollection;
 import com.gcs.aol.service.IQuestionManager;
 import com.gcs.sysmgr.service.impl.GenericManagerImpl;
 
@@ -28,9 +29,13 @@ public class QuestionManagerImpl extends GenericManagerImpl<Question, QuestionDA
 	 */
 	@Override
 	@Transactional
-	public void saveQuestions(List<Question> questionList) {
-		for (Question question : questionList) {
-			dao.save(question);
+	public void saveQuestions(QuestionCollection questions) {
+		List<Question> qList = questions.getQuestions();
+		for (Question question : qList) {
+			if(question.getQuestion() != null) {
+				question.setTid(questions.getTid());
+				dao.save(question);
+			} 
 		}
 	}
 }

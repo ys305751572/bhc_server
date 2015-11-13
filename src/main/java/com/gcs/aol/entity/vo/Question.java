@@ -25,7 +25,7 @@ public class Question {
 	private String id;
 	
 	@Column(name = "QNO")
-	private String qno;  // 题号
+	private Integer qno;  // 题号
 	@Column(name = "TITLE")
 	private String question; // 题目
 	@Column(name = "A")
@@ -63,10 +63,10 @@ public class Question {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getQno() {
-		return qno;
+	public int getQno() {
+		return qno.intValue();
 	}
-	public void setQno(String qno) {
+	public void setQno(Integer qno) {
 		this.qno = qno;
 	}
 	public String getOptiona() {

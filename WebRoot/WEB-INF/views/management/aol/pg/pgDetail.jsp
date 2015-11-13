@@ -85,27 +85,27 @@ $(document).ready(function (){
 					<h2><i class="icon-film"></i> 广告信息</h2>
 					
 					<jsp:include page="/WEB-INF/views/backDiv.jsp" flush="true">
-						<jsp:param name="url" value="${contextPath}/management/question/qcList"/>
+						<jsp:param name="url" value="${contextPath}/management/pg/pgList"/>
 					</jsp:include>
 				</div>
 				<div class="box-content">
-					<form class="form-horizontal" method="post" id="restarteProForm" action="${contextPath}/management/question/edit" enctype="multipart/form-data">
+					<form class="form-horizontal" method="post" id="restarteProForm" action="" enctype="multipart/form-data">
 					<table>
 					  <tr>
 					    <td>
 					    	<div class="control-group">
 								<label class="control-label_1" for="title">标题</label>
 								<div class="controls_1">
-									<input name="id" type="hidden" value="${qc.id}" />
-									<input name="title" style="width:450px;" type="text" placeholder="请输入标题" value="${qc.title}" class="input-large" required="required"  check-type="required" required-message="请输入标题" />
+									<input name="id" type="hidden" value="${pg.id}" />
+									${pg.title}
 								</div>
 							</div>
 					    </td>
 					    <td rowspan="5">
 					    	<div style="width:400px; height:354px; overflow:hidden; margin-top: 0px; margin-bottom: 18px; margin-left: 20px; border:1px solid blue;">
 								<div id="imgDiv">
-									<c:if test="${!empty qc.image}">
-										<img src="${contextPath}${qc.image}" width="400px" height="354px"  alt="${qc.image}">
+									<c:if test="${!empty pg.image}">
+										<img src="${contextPath}${pg.image}" width="400px" height="354px"  alt="${pg.image}">
 									</c:if>
 								</div>
 							</div>
@@ -114,20 +114,36 @@ $(document).ready(function (){
 					  <tr>
 					    <td>
 					    	<div class="control-group">
-								<label class="control-label_1" for="imageFile">图片</label>
+								<label class="control-label_1" for="content">内容</label>
 								<div class="controls_1">
-									<input id="imageFile" name="imageFile" style="width:450px;" style="width:450px;" type="file" class="input-medium" />
+									${pg.content}
 								</div>
 							</div>
 					    </td>
 					  </tr>
 					  <tr>
+					    <td>
+					    	<div class="control-group">
+								<label class="control-label_1" for="url">链接地址</label>
+								<div class="controls_1">
+									${pg.url}
+								</div>
+							</div>
+					    </td>
+					  </tr>
+					  
+					  <tr>
 						<td>
 							<div class="control-group">
-								<label class="control-label" for="btnSave"></label>
-								<div style="margin-left: 300px;">
-									<button id="btnSave" name="btnSave" type="submit" class="btn btn-primary">保存</button>
-								</div>
+							  <label class="control-label" style="width:60px;" for="type">性别</label>
+							  <div class="controls" style="margin-left: 80px;">
+							  		<c:if test="${pg.type eq 0 }">
+							  			病理
+							  		</c:if>
+								    <c:if test="${pg.type eq 1 }">
+							  			病理
+							  		</c:if>
+							  </div>
 							</div>
 						</td>
 					  </tr>
