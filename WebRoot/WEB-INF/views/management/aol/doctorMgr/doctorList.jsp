@@ -195,10 +195,7 @@ Date.prototype.format = function(format){
 				
 				function searchBtnClick(){
 					var arrayObj = [
-						{"name":"usersname","value":$("#usersname").val()},
-						{"name":"sendTimeQ","value":$("#sendTimeQ").val()},
-						{"name":"sendTimeZ","value":$("#sendTimeZ").val()},
-						{"name":"xtstate","value":$("#xtstate").val()}
+						{"name":"name","value":$("#name").val()}
 					];
 					dataTableObj.search(arrayObj);
 				}
@@ -292,8 +289,6 @@ Date.prototype.format = function(format){
 					<li><a href="javascript:addDoctor();" class="button button-rounded button-flat button-tiny" style="width: 120px;"><i class="icon-6" style="width: 20px; height: 20px; line-height: 20px;"></i>&nbsp;新增医师</a></li>
 					<li style="color: #c5c5c5">|</li>
 					<li><a href="javascript:editDoctor();" class="button button-rounded button-flat button-tiny" style="width: 100px;"><i class="icon-2" style="width: 20px; height: 20px; line-height: 20px;"></i>&nbsp;编辑医师</a></li>
-					<li style="color: #c5c5c5">|</li>
-					<li><a href="#" class="button button-rounded button-flat button-tiny" style="width: 100px;"><i class="icon-7" style="width: 20px; height: 20px; line-height: 20px;"></i>&nbsp;添加设备</a></li>
 				</div>
 				<!-- 操作按钮end -->
 			
@@ -303,47 +298,14 @@ Date.prototype.format = function(format){
 						<form id="form1" name="form1" class="form-horizontal" action="" method="post" enctype="multipart/form-data">
 							<table border="0px" style="height: 40px;word-break: keep-all;white-space:nowrap;float: left;">
 								<tr>
-									<td>用户姓名：</td>
-									<td><input id="usersname" name="usersname" type="text" value="" style="width: 120px; height: 15px;" /></td>
+									<td>医师姓名：</td>
+									<td><input id="name" name="name" type="text" value="" style="width: 120px; height: 15px;" /></td>
 									<td width="10px">&nbsp;</td>
-								</tr>
-							</table>
-
-							<table border="0px" style="height: 40px;word-break: keep-all;white-space:nowrap;float: left;">
-								<tr>
-									<td>测量时间范围：</td>
-									<td>
-										<input type="text" name="sendTimeQ"  id="sendTimeQ" value="${sendTimeQ}" readonly   class="form_datetime"  required="required"  style="width: 90px"/>
-										~
-										<input type="text" name="sendTimeZ"  id="sendTimeZ"   readonly  class="form_datetime"  required="required"  style="width: 90px"/>
-									</td>
-									<td width="10px">&nbsp;</td>
-								</tr>
-							</table>
-
-							<table border="0px" style="height: 40px;word-break: keep-all;white-space:nowrap;float: left;">
-								<tr>
-									<td>血压状态：</td>
-									<td>
-									<select id="xtstate" name="xtstate"  style="width: 120px;">
-										<option value="" <c:if test="${xtstate==''}">selected="selected" </c:if>>全部</option>
-										<option <c:if test="${xtstate=='1'}">selected="selected" </c:if> value="1">正常</option>
-										<option <c:if test="${xtstate=='2'}">selected="selected" </c:if> value="2">正常高压</option>
-										<option <c:if test="${xtstate=='3'}">selected="selected" </c:if> value="3">高血压</option>
-										<option <c:if test="${xtstate=='0'}">selected="selected" </c:if> value="0">低血压</option>
-										<option <c:if test="${xtstate=='4'}">selected="selected" </c:if> value="4">高压偏高</option>
-										<option <c:if test="${xtstate=='5'}">selected="selected" </c:if> value="5">高压偏低</option>
-										<option <c:if test="${xtstate=='6'}">selected="selected" </c:if> value="6">低压偏高</option>
-										<option <c:if test="${xtstate=='7'}">selected="selected" </c:if> value="7">低压偏低</option>
-									</select>
-									</td>
-									<td width="20px">&nbsp;</td>
 									<td height="40px" align="right">
 										<button id="btnSendTop" name="btnSendTop"  style="width:50px;cursor:pointer;"type="button" class="btn btn-primary" onclick="searchBtnClick()"></i>搜索</button>
 									</td>
 								</tr>
 							</table>
-							
 						</form>
 						
 					</div>

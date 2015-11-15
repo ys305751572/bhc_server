@@ -68,7 +68,10 @@ public class QuestionController extends GenericEntityController<QuestionContaine
 		PageParameters pp = PageUtil.getParameter(paramMap, "");
 		Page<QuestionContainer> questionContainerPage = null;
 		try {
-			questionContainerPage = qcManager.findAll(null, pp.getStart(), pp.getLength());
+			QuestionContainer qc = new QuestionContainer();
+			qc.setTitle(paramMap.get("title"));
+			
+			questionContainerPage = qcManager.findAll(qc, pp.getStart(), pp.getLength());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

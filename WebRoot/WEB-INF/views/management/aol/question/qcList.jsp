@@ -160,9 +160,7 @@ Date.prototype.format = function(format){
 				
 				function searchBtnClick(){
 					var arrayObj = [
-						{"name":"_title","value":$("#_title").val()},
-						{"name":"adsType","value":$("#adsType").val()},
-						{"name":"adsState","value":$("#adsState").val()}
+						{"name":"title","value":$("#_title").val()}
 					];
 					dataTableObj.search(arrayObj);
 				}
@@ -250,36 +248,6 @@ Date.prototype.format = function(format){
 									<td width="10px">&nbsp;</td>
 								</tr>
 							</table>
-
-							<table border="0px" style="height: 40px;word-break: keep-all;white-space:nowrap;float: left;">
-								<tr>
-									<td>类型：</td>
-									<td>
-									<select id="adsType" name="adsType"  style="width: 120px;">
-										<option value="" <c:if test="${adsType==''}">selected="selected" </c:if>>全部</option>
-									</select>
-									</td>
-									<td width="10px">&nbsp;</td>
-								</tr>
-							</table>
-
-							<table border="0px" style="height: 40px;word-break: keep-all;white-space:nowrap;float: left;">
-								<tr>
-									<td>状态：</td>
-									<td>
-									<select id="adsState" name="adsState"  style="width: 120px;">
-										<option value="" <c:if test="${adsState==''}">selected="selected" </c:if>>全部</option>
-										<option <c:if test="${adsState=='1'}">selected="selected" </c:if> value="1">已发布</option>
-										<option <c:if test="${adsState=='0'}">selected="selected" </c:if> value="0">未发布</option>
-									</select>
-									</td>
-									<td width="20px">&nbsp;</td>
-									<td height="40px" align="right">
-										<button id="btnSendTop" name="btnSendTop"  style="width:50px;cursor:pointer;"type="button" class="btn btn-primary" onclick="searchBtnClick()"></i>搜索</button>
-									</td>
-								</tr>
-							</table>
-							
 						</form>
 						
 					</div>

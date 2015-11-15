@@ -66,7 +66,9 @@ public class PgController extends GenericEntityController<Pg, Pg, PgManagerImpl>
 		PageParameters pp = PageUtil.getParameter(paramMap, "");
 		Page<Pg> pgPage = null;
 		try {
-			pgPage = manager.findAll(null, pp.getStart(), pp.getLength());
+			Pg pg = new Pg();
+			pg.setTitle(paramMap.get("title"));
+			pgPage = manager.findAll(pg, pp.getStart(), pp.getLength());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

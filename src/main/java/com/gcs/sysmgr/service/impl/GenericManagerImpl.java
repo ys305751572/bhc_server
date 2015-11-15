@@ -339,5 +339,9 @@ public class GenericManagerImpl<E, D extends IBaseJpaRepository<E>> implements G
 	public long count() {
 		return getEntityDAO().count();
 	}
-
+	
+	public Page<E> queryPage(final int firstindex, final int maxresult, final String sql) {
+		
+		return null;
+	}
 }

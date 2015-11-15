@@ -122,7 +122,9 @@ public class DoctorContorller extends GenericEntityController<Doctor, Doctor, Do
 		PageParameters pp = PageUtil.getParameter(paramMap, "");
 		Page<Doctor> doctorPage = null;
 		try {
-			doctorPage = iDoctorManager.findAll(null, pp.getStart(), pp.getLength());
+			Doctor d = new Doctor();
+			d.setName(paramMap.get("name"));
+			doctorPage = iDoctorManager.findAll(d, pp.getStart(), pp.getLength());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
