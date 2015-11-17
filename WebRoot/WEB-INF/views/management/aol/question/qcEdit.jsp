@@ -82,7 +82,7 @@ $(document).ready(function (){
 		<div class="row-fluid z-ulnone">
 			<div class="box span12">
 				<div class="box-header well z-h2">
-					<h2><i class="icon-film"></i> 广告信息</h2>
+					<h2><i class="icon-film"></i>检测题目</h2>
 					
 					<jsp:include page="/WEB-INF/views/backDiv.jsp" flush="true">
 						<jsp:param name="url" value="${contextPath}/management/question/qcList"/>

@@ -57,8 +57,63 @@ $(document).ready(function(){
 	CKEDITOR.instances.detail.setData("${doctor.detail}");
 });
 
+function checkName() {
+	var _name = $("#name").val();
+	if(_name == null || _name.trim() == '') {
+		$("#_name").html("请输入名称");
+		
+	}
+}
+
+function checkLevel() {
+	var _level = $("#level").val();
+	if(_level == null || _level.trim() == '') {
+		$("#_level").html("清输入医师职业");
+		
+	}
+}
+
+function checkPart() {
+	var _depart = $("#depart").val();
+	if(_depart == null || _depart.trim() == '') {
+		$("#_depart").html("清输入所在科室");
+		
+	}
+}
+
+function checkHospital() {
+	var _hospital = $("#hospital").val();
+	if(_hospital == null || _hospital.trim() == '') {
+		$("#_hospital").html("清输入所在医院");
+		
+	}
+}
+
 function submitFrom(){
 	
+	var _name = $("#name").val();
+	if(_name == null || _name.trim() == '') {
+		$("#_name").html("请输入名称");
+		return;
+	}
+	
+	var _level = $("#level").val();
+	if(_level == null || _level.trim() == '') {
+		$("#_level").html("清输入医师职业");
+		return ;
+	}
+	
+	var _depart = $("#depart").val();
+	if(_depart == null || _depart.trim() == '') {
+		$("#_depart").html("清输入所在科室");
+		return ;
+	}
+	
+	var _hospital = $("#hospital").val();
+	if(_hospital == null || _hospital.trim() == '') {
+		$("#_hospital").html("清输入所在医院");
+		return ;
+	}
 	var detail = CKEDITOR.instances.detail.getData();
 	$("#doctorForm").submit();
 }
@@ -94,7 +149,8 @@ function submitFrom(){
 											<div class="control-group">
 											  <label class="control-label" style="width:60px;" for="name">医师名称</label>
 											  <div class="controls" style="margin-left: 80px;">
-											  	  <input type="text" id="name" name="name" value="${doctor.name}" style="width:870px;" placeholder="请填写医师名称" maxlength="1000"/>
+											  	  <input type="text" id="name" name="name" value="${doctor.name}" style="width:800px;" onblur="checkName();" placeholder="请填写医师名称" maxlength="1000" required="required"  check-type="required" required-message="请输入名称"/>
+											  	  <span id="_name" style="color: red;"></span>
 											  </div>
 											</div>
 										</td>
@@ -117,7 +173,8 @@ function submitFrom(){
 											<div class="control-group">
 											  <label class="control-label" style="width:60px;" for="level">职业</label>
 											  <div class="controls" style="margin-left: 80px;">
-											  	  <input type="text" id="level" name="level" value="${doctor.level}" style="width:870px;" placeholder="请填写医师职业" maxlength="1000"/>
+											  	  <input type="text" id="level" name="level" value="${doctor.level}" style="width:800px;" onblur="checkLevel();" placeholder="请填写医师职业" maxlength="1000" required="required"  check-type="required" required-message="请输入职业" />
+											 	  <span id="_level" style="color: red;"></span>
 											  </div>
 											</div>
 										</td>
@@ -127,7 +184,8 @@ function submitFrom(){
 											<div class="control-group">
 											  <label class="control-label" style="width:60px;" for="depart">科室</label>
 											  <div class="controls" style="margin-left: 80px;">
-											  	  <input type="text" id="depart" name="depart" value="${doctor.depart}" style="width:870px;" placeholder="请填写医师科室" maxlength="1000"/>
+											  	  <input type="text" id="depart" name="depart" value="${doctor.depart}" style="width:800px;" onblur="checkPart();" placeholder="请填写医师科室" maxlength="1000" required="required"  check-type="required" required-message="请输入科室" />
+											  	  <span id="_depart" style="color: red;"></span>
 											  </div>
 											</div>
 										</td>
@@ -137,7 +195,8 @@ function submitFrom(){
 											<div class="control-group">
 											  <label class="control-label" style="width:60px;" for="hospital">所在医院</label>
 											  <div class="controls" style="margin-left: 80px;">
-											  	  <input type="text" id="hospital" name="hospital" value="${doctor.hospital}" style="width:870px;" placeholder="请填写医师所在医院" maxlength="1000"/>
+											  	  <input type="text" id="hospital" name="hospital" value="${doctor.hospital}" style="width:800px;" onblur="checkHospital();"  placeholder="请填写医师所在医院" maxlength="1000" required="required"  check-type="required" required-message="请输入所在医院" />
+											  	  <span id="hospital" style="color: red;"></span>
 											  </div>
 											</div>
 										</td>
@@ -147,7 +206,7 @@ function submitFrom(){
 											<div class="control-group">
 											  <label class="control-label" style="width:60px;" for="reward">所获奖励</label>
 											  <div class="controls" style="margin-left: 80px;">
-											  	  <input type="text" id="reward" name="reward" value="${doctor.reward}" style="width:870px;" placeholder="请填写医师所获奖励" maxlength="1000"/>
+											  	  <input type="text" id="reward" name="reward" value="${doctor.reward}" style="width:800px;" placeholder="请填写医师所获奖励" maxlength="1000"/>
 											  </div>
 											</div>
 										</td>
@@ -157,7 +216,7 @@ function submitFrom(){
 											<div class="control-group">
 											  <label class="control-label" style="width:60px;" for="domain">擅长领域</label>
 											  <div class="controls" style="margin-left: 80px;">
-											  	  <input type="text" id="reward" name="domain" value="${doctor.domain}" style="width:870px;" placeholder="请填写医师擅长领域" maxlength="1000"/>
+											  	  <input type="text" id="reward" name="domain" value="${doctor.domain}" style="width:800px;" placeholder="请填写医师擅长领域" maxlength="1000" required="required"  check-type="required" required-message="请输入领域" />
 											  </div>
 											</div>
 										</td>

@@ -27,6 +27,7 @@ import com.gcs.aol.service.IQuestionContainerManager;
 import com.gcs.aol.service.IQuestionManager;
 import com.gcs.aol.service.impl.QuestionManagerImpl;
 import com.gcs.aol.utils.CommonUtils;
+import com.gcs.aol.vo.MsgJsonReturn;
 import com.gcs.sysmgr.controller.GenericEntityController;
 import com.gcs.sysmgr.vo.PageParameters;
 import com.gcs.utils.DataTableReturnObject;
@@ -85,6 +86,10 @@ public class QuestionController extends GenericEntityController<QuestionContaine
 	 */
 	@RequestMapping(value = "edit", method = RequestMethod.POST)
 	public String createQuestionContainer(QuestionContainer qc,MultipartFile imageFile,HttpServletRequest request) {
+		QuestionContainer _qc = null;
+		if(StringUtils.isNotBlank(qc.getId())) {
+			_qc = qcManager.queryByPK(qc.getId());
+		}
 		
 		if(imageFile!=null&&imageFile.getSize()>0){
 			String webRoot = request.getSession().getServletContext().getRealPath("");
@@ -92,15 +97,20 @@ public class QuestionController extends GenericEntityController<QuestionContaine
 			if(StringUtils.isNotBlank(attach.getAttachId()))
 				qc.setImage("//upload//qc//"+attach.getAttachName());
 		}
+		if(_qc != null && StringUtils.isBlank(qc.getImage())) {
+			qc.setImage(_qc.getImage());
+		}
+		
 		qc.setCreateTime(new Date());
 		qcManager.create(qc);
 		return QUESTION_LIST;
 	}
 	
 	@RequestMapping(value = "delete", method = RequestMethod.POST)
-	public String deleteQuestionContainer(String id) {
+	@ResponseBody
+	public MsgJsonReturn deleteQuestionContainer(String id) {
 		qcManager.deleteByPK(id);
-		return QUESTION_LIST;
+		return new MsgJsonReturn(true, "删除成功");
 	}
 	
 	@RequestMapping(value = "pageEdit", method = RequestMethod.GET)

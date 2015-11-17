@@ -191,8 +191,8 @@ Date.prototype.format = function(format){
 						jAlert('请选择要删除的记录','提示');
 						return;
 					} else {
-						var imageadsId = dataTableObj.getSelectedRow().imageadsId;
-						jConfirm('是否确认删除该广告？',"提示",function(r){
+						var id = dataTableObj.getSelectedRow().id;
+						jConfirm('是否确认删除该题库？',"提示",function(r){
 							if(r) { 
 								$.post("${contextPath}/management/question/delete",{"id":id},function(result){
 									if(result.success){
@@ -201,20 +201,6 @@ Date.prototype.format = function(format){
 								});
 						 	}
 						});
-					}
-				}
-
-				function publishAds(){
-					if(!dataTableObj.getSelectedRow()){
-						jAlert('请选择要发布的广告','提示');
-						return;
-					} else {
-						if(dataTableObj.getSelectedRow().adsState == 0){
-							window.location.href = "${contextPath}/management/imageads/publishads?imageadsId="+dataTableObj.getSelectedRow().imageadsId;
-						} else {
-							jAlert('该广告已发布无法再次发布','提示');
-							return;
-						}
 					}
 				}
 		</script>

@@ -11,12 +11,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.gcs.aol.entity.Doctor;
 import com.gcs.aol.service.IDoctorManager;
 import com.gcs.aol.service.impl.DoctorManagerImpl;
+import com.gcs.aol.vo.MsgJsonReturn;
 import com.gcs.sysmgr.controller.GenericEntityController;
 import com.gcs.sysmgr.vo.PageParameters;
 import com.gcs.utils.DataTableReturnObject;
@@ -104,6 +104,13 @@ public class DoctorContorller extends GenericEntityController<Doctor, Doctor, Do
 			e.printStackTrace();
 		}
 		return DOCTORD_DETAIL;
+	}
+	
+	@RequestMapping(value = "delete", method = RequestMethod.POST)
+	@ResponseBody
+	public MsgJsonReturn delete(String id) {
+		iDoctorManager.deleteByPK(id);
+		return new MsgJsonReturn(true, "删除成功");
 	}
 	
 	/**

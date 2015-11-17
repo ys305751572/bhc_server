@@ -241,6 +241,24 @@ Date.prototype.format = function(format){
 					}
 				}
 				
+				function delDoctor(){
+					if(!dataTableObj.getSelectedRow()){
+						jAlert('请选择要删除的记录','提示');
+						return;
+					} else {
+						var id = dataTableObj.getSelectedRow().id;
+						jConfirm('是否确认删除该医师？',"提示",function(r){
+							if(r) { 
+								$.post("${contextPath}/management/doctor/delete",{"id":id},function(result){
+									if(result.success){
+										window.location.href = "${contextPath}/management/doctor/paegList";
+									}
+								});
+						 	}
+						});
+					}
+				}
+				
 			    //查看用户信息
 			    function viewUserInfo(id){
 					if(!id){
@@ -289,6 +307,8 @@ Date.prototype.format = function(format){
 					<li><a href="javascript:addDoctor();" class="button button-rounded button-flat button-tiny" style="width: 120px;"><i class="icon-6" style="width: 20px; height: 20px; line-height: 20px;"></i>&nbsp;新增医师</a></li>
 					<li style="color: #c5c5c5">|</li>
 					<li><a href="javascript:editDoctor();" class="button button-rounded button-flat button-tiny" style="width: 100px;"><i class="icon-2" style="width: 20px; height: 20px; line-height: 20px;"></i>&nbsp;编辑医师</a></li>
+					<li style="color: #c5c5c5">|</li>
+					<li><a href="javascript:delDoctor();" class="button button-rounded button-flat button-tiny" style="width: 100px;"><i class="icon-2" style="width: 20px; height: 20px; line-height: 20px;"></i>&nbsp;删除医师</a></li>
 				</div>
 				<!-- 操作按钮end -->
 			

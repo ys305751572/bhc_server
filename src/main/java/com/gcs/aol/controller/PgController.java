@@ -103,11 +103,19 @@ public class PgController extends GenericEntityController<Pg, Pg, PgManagerImpl>
 	 */
 	@RequestMapping(value = "edit", method = RequestMethod.POST)
 	public String saveOrEdit(Pg pg, MultipartFile imageFile,HttpServletRequest request) {
+		Pg _pg = null;
+		if(StringUtils.isNotBlank(pg.getId())) {
+			_pg = manager.queryByPK(pg.getId());
+		}
+		
 		if(imageFile!=null&&imageFile.getSize()>0){
 			String webRoot = request.getSession().getServletContext().getRealPath("");
 			Attach attach  = CommonUtils.uploadAttach(imageFile, webRoot, "//upload//qc//",null);
 			if(StringUtils.isNotBlank(attach.getAttachId()))
 				pg.setImage("//upload//qc//"+attach.getAttachName());
+		}
+		if(_pg != null && StringUtils.isBlank(pg.getImage())) {
+			pg.setImage(_pg.getImage());
 		}
 		pg.setCreateDate(new Date());
 		manager.save(pg);
