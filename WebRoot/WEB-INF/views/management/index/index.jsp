@@ -324,9 +324,11 @@
                             <li id="menu1_2" onclick="changeMenu(this.id,'测量结果&nbsp;>&nbsp;血压信息')">
                                 <a href="${contextPath}/management/measure/xyReport" target="mainIFrame">血压信息</a>
                             </li>
+                            <!-- 
                             <li id="menu1_3" onclick="changeMenu(this.id,'测量结果&nbsp;>&nbsp;体温信息')">
                                 <a href="${contextPath}/management/measure/twReport" target="mainIFrame">体温信息</a>
                             </li>
+                             -->
                             <li id="menu1_4" onclick="changeMenu(this.id,'测量结果&nbsp;>&nbsp;血压预警')">
                                 <a href="${contextPath}/management/measure/xylist" target="mainIFrame">血压预警</a>
                             </li>

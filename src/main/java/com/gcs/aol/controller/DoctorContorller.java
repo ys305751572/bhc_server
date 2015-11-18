@@ -60,6 +60,7 @@ public class DoctorContorller extends GenericEntityController<Doctor, Doctor, Do
 		
 		try {
 			Doctor doctor = iDoctorManager.findById(id);
+			doctor.setDetail(doctor.getDetail() !=null ? doctor.getDetail().replaceAll("\"", "\'").trim() : "");
 			model.addAttribute("doctor", doctor);
 		} catch (Exception e) {
 			e.printStackTrace();

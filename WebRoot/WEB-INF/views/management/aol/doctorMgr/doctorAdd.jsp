@@ -54,7 +54,6 @@
 		
 <script type="text/javascript">		
 $(document).ready(function(){
-	CKEDITOR.instances.detail.setData("${doctor.detail}");
 });
 
 function checkName() {
@@ -226,7 +225,7 @@ function submitFrom(){
 											<div class="control-group">
 											  <label class="control-label" style="width:60px;" for="detail">正文</label>
 											  <div class="controls" style="margin-left: 80px;">
-											  	  <textarea id="detail" name="detail" rows="25"></textarea>
+											  	  <textarea id="detail" name="detail" rows="25">${ doctor.detail}</textarea>
 											  	  <ckeditor:replace replace="detail" basePath="${contextPath}/ckeditor/"  config="<%=settings%>"></ckeditor:replace>
 											  </div>
 											</div>
