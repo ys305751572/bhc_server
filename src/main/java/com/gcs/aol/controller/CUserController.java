@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.gcs.aol.entity.CUser;
 import com.gcs.aol.service.ICUserManager;
@@ -24,18 +26,25 @@ import com.gcs.utils.PageUtil;
  *
  */
 @Controller
-@RequestMapping("/cuser/")
+@RequestMapping("/management/cuser/")
 public class CUserController extends GenericEntityController<CUser, CUser, CUserManagerImpl>{
 
 	@Autowired
 	private ICUserManager manager;
+	
+	@RequestMapping(value = "listPage", method = RequestMethod.GET)
+	public String listPage() {
+		return "management/aol/cuserMgr/cuserList";
+	}
 	
 	/**
 	 * 子女用户列表
 	 * @param params
 	 * @return
 	 */
-	public JSONResponse listPage(@RequestBody JSONParam[] params) {
+	@RequestMapping(value = "findAll", method = RequestMethod.POST)
+	@ResponseBody
+	public JSONResponse findAll(@RequestBody JSONParam[] params) {
 		
 		HashMap<String, String> paramMap = (HashMap<String, String>) convertToMap(params);
 		PageParameters pp = PageUtil.getParameter(paramMap, "");
@@ -49,6 +58,4 @@ public class CUserController extends GenericEntityController<CUser, CUser, CUser
 		}
 		return successed(new DataTableReturnObject(cuserPage.getTotalElements(), cuserPage.getTotalElements(),pp.getSEcho(), cuserPage.getContent()));
 	}
-	
-	
 }

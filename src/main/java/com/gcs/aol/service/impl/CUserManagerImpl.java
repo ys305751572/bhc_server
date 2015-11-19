@@ -44,7 +44,7 @@ public class CUserManagerImpl extends GenericManagerImpl<CUser, CUserDAO> implem
 				List<Predicate> list = new ArrayList<Predicate>();  
 				
 				if(d.getNickname() != null) {
-					list.add(cb.like(root.get("name").as(String.class), "%" + d.getNickname() + "%"));
+					list.add(cb.like(root.get("nickname").as(String.class), "%" + d.getNickname() + "%"));
 				}
 			    Predicate[] p = new Predicate[list.size()];  
 			    return cb.and(list.toArray(p));  

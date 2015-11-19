@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gcs.aol.dao.AolUserDAO;
+import com.gcs.aol.entity.AolChildRelation;
 import com.gcs.aol.entity.AolUser;
 import com.gcs.aol.service.IAolUserManager;
 import com.gcs.aol.vo.PageVO;
@@ -158,6 +159,44 @@ public class AolUserManagerImpl extends GenericManagerImpl<AolUser, AolUserDAO> 
 			pv.setStart(pp.getStart());
 			pv.setLength(pp.getLength());
 			pv.setList(list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		em.close();
+		return pv;
+	}
+	
+	/**
+	 * 查找用户列表，做成通用方法能够查抄到普通用户，代理商用户，特殊用户
+	 * @param pp
+	 * @param usersname
+	 * @param bak4 参数0,普通用户  1,代理商用户  2,特殊用户
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public PageVO queryFoucsUsersDataList(PageParameters pp, String user_id,String username,String bak4){
+		PageVO pv = new PageVO();
+		EntityManager em = entityManagerFactory.createEntityManager();
+		try {
+			String innserSql = "select _ar from ";
+			String sql = "AolChildRelation _ar WHERE _ar.childId = '" + user_id + "'";
+			List<AolChildRelation> list = null;
+			Long count = queryCount2(sql);
+			Query query = em.createQuery(innserSql + sql);
+			int firstResult = pp.getStart() * pp.getLength();
+			if(pp.getLength()>=0){
+				query.setFirstResult(firstResult);
+				query.setMaxResults(pp.getLength());
+			}
+			list = query.getResultList();
+			List<AolUser> aolUserList = new ArrayList<AolUser>();
+			for (AolChildRelation ar : list) {
+				aolUserList.add(ar.getAolUser());
+			}
+			pv.setCount(count);
+			pv.setStart(pp.getStart());
+			pv.setLength(pp.getLength());
+			pv.setList(aolUserList);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -460,6 +499,21 @@ public class AolUserManagerImpl extends GenericManagerImpl<AolUser, AolUserDAO> 
 	public Long queryCount(String sql) {
 		Long count = Long.valueOf(0);
 		String countSql = "select count(u.user_id) as count from " + sql + "";
+		EntityManager em = entityManagerFactory.createEntityManager();
+		Query query = em.createQuery(countSql);
+		count = (Long) query.getSingleResult();
+		em.close();
+		return count;
+	}
+	
+	/**
+	 * 查询总条数
+	 * @param sql
+	 * @return
+	 */
+	public Long queryCount2(String sql) {
+		Long count = Long.valueOf(0);
+		String countSql = "select count(_ar.id) as count from " + sql + "";
 		EntityManager em = entityManagerFactory.createEntityManager();
 		Query query = em.createQuery(countSql);
 		count = (Long) query.getSingleResult();

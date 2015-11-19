@@ -344,9 +344,11 @@
                             <li id="menu2_1" onclick="changeMenu(this.id,'安全监护&nbsp;>&nbsp;位置信息查询')">
                                 <a href="${contextPath}/management/position/wzxxlist" target="mainIFrame">位置信息查询</a>
                             </li>
+                            <!-- 
                             <li id="menu2_2" onclick="changeMenu(this.id,'安全监护&nbsp;>&nbsp;轨迹信息查询')">
                                 <a href="${contextPath}/management/position/wzgjxxlist" target="mainIFrame">轨迹信息查询</a>
                             </li>
+                             -->
                             <li id="menu2_3" onclick="changeMenu(this.id,'安全监护&nbsp;>&nbsp;呼救监控')">
                                 <a href="${contextPath}/management/position/hjjklist" target="mainIFrame">呼救监控</a>
                             </li>
@@ -398,6 +400,9 @@
                             <li id="menu5_2" onclick="changeMenu(this.id,'用户管理&nbsp;>&nbsp;用户转移')">
                                 <a href="${contextPath}/management/aoluser/usertransfer" target="mainIFrame">用户转移</a>
                             </li>
+                            <li id="menu5_3" onclick="changeMenu(this.id,'用户管理&nbsp;>&nbsp;子女用户管理')">
+                                <a href="${contextPath}/management/cuser/listPage" target="mainIFrame">子女用户信息查询</a>
+                            </li>
                         </ul>
                     </li>
 					
@@ -416,21 +421,27 @@
                             <li id="menu7_1" onclick="changeMenu(this.id,'设备管理&nbsp;>&nbsp;设备信息查询')">
                                 <a href="${contextPath}/management/devices/deviceslist" target="mainIFrame">设备信息查询</a>
                             </li>
+                            <!-- 
                             <li id="menu7_2" onclick="changeMenu(this.id,'设备管理&nbsp;>&nbsp;设备批量导入')">
                                 <a href="${contextPath}/management/devices/uploaddevice" target="mainIFrame">设备批量导入</a>
                             </li>
+                             -->
+                            <!-- 
                             <li id="menu7_3" onclick="changeMenu(this.id,'设备管理&nbsp;>&nbsp;机器码查询')">
                                 <a href="${contextPath}/management/devices/gotoqueryDevice" target="mainIFrame">机器码查询</a>
                             </li>
+                             -->
                             <li id="menu7_4" onclick="changeMenu(this.id,'设备管理&nbsp;>&nbsp;测量数据查询')">
                                 <a href="${contextPath}/management/devices/querymeasurelist" target="mainIFrame">测量数据查询</a>
                             </li>
+                            <!-- 
                             <li id="menu7_5" onclick="changeMenu(this.id,'设备管理&nbsp;>&nbsp;设备转移')">
                                 <a href="${contextPath}/management/devices/gotoDevTransfer" target="mainIFrame">设备转移</a>
                             </li>
+                             -->
                         </ul>
                     </li>
-					
+					<!-- 
 					<li id="menu8">
                         <a href="#" name="firstMenu"><span class="aol aol-agent"></span> 代理商管理<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
@@ -442,7 +453,7 @@
                             </li>
                         </ul>
                     </li>
-					
+					 -->
 					<li id="menu9">
                         <a href="#" name="firstMenu"><span class="aol aol-system"></span> 系统管理<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">

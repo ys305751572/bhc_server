@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,9 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
@@ -94,6 +97,34 @@ public class AolUserController extends GenericEntityController<AolUser, AolUser,
 			pv = this.getEntityManager().queryUsersDataList(pp, loginuser.getUserId(),usersname,"0");
 		}
 		 
+		Long count = (long)pv.getCount();
+		List tmpList = pv.getList();
+		return successed(new DataTableReturnObject(count, count, pp.getSEcho(),tmpList));
+	}
+	
+	@RequestMapping(value = "foucsListPage", method = RequestMethod.GET)
+	public String foucsListPage(String cuserId,Model model) {
+		Map<String,Object> respMap = new HashMap<String, Object>();
+		respMap.put("cuserId", cuserId);
+		model.addAttribute("cuser", respMap);
+		return "management/aol/cuserMgr/usersList";
+	}
+	
+	/**
+	 * 获取用户列表
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="/getFoucsUserList", method=RequestMethod.POST)
+	@ResponseBody
+	public JSONResponse getFoucsUserList(@RequestBody JSONParam[] params,@RequestParam("cuserId") String cuserId,HttpServletRequest request) {
+		HashMap<String, String> paramMap = (HashMap<String, String>) convertToMap(params);
+		String sortStr = paramMap.get("bbSortName");
+		PageParameters pp = PageUtil.getParameter(paramMap, sortStr);
+		//获取登录用户
+		PageVO pv = new PageVO();
+		LoginUserVO loginuser = (LoginUserVO) request.getSession().getAttribute(SecurityConstants.LOGIN_USER);
+		pv = this.getEntityManager().queryFoucsUsersDataList(pp, cuserId,"0","0");
 		Long count = (long)pv.getCount();
 		List tmpList = pv.getList();
 		return successed(new DataTableReturnObject(count, count, pp.getSEcho(),tmpList));

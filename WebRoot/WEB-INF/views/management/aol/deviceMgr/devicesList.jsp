@@ -71,7 +71,7 @@ Date.prototype.format = function(format){
 							    {'text':'设备类型','dataIndex':'bak1','render':bak1Render,'width':'80px'},
 							    {'text':'生产年份','dataIndex':'deviceProYear','width':'80px'},
 							    {'text':'生产月份','dataIndex':'deviceProMonth','width':'80px'},
-							    {'text':'所属代理商','dataIndex':'organiseName','render':organiseNameRender,'width':'200px'},
+							    // {'text':'所属代理商','dataIndex':'organiseName','render':organiseNameRender,'width':'200px'},
 							    {'text':'使用状态','dataIndex':'usedState','render':usedStateRender,'width':'80px'}
 							    ];
 				var arrayObj = [];

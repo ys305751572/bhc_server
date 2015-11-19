@@ -17,7 +17,7 @@ import com.gcs.sysmgr.entity.AbstractEntity;
 @Entity
 @Table(name = "childrenuser")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class CUser extends AbstractEntity implements Serializable {
+public class CUser implements Serializable {
 	
 	private static final long serialVersionUID = -2571308010092743039L;
 
