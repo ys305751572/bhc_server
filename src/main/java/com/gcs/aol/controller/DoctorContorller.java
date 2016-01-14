@@ -2,8 +2,10 @@ package com.gcs.aol.controller;
 
 import java.util.HashMap;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -12,10 +14,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.gcs.aol.entity.Attach;
 import com.gcs.aol.entity.Doctor;
 import com.gcs.aol.service.IDoctorManager;
 import com.gcs.aol.service.impl.DoctorManagerImpl;
+import com.gcs.aol.utils.CommonUtils;
 import com.gcs.aol.vo.MsgJsonReturn;
 import com.gcs.sysmgr.controller.GenericEntityController;
 import com.gcs.sysmgr.vo.PageParameters;
@@ -74,7 +79,22 @@ public class DoctorContorller extends GenericEntityController<Doctor, Doctor, Do
 	 * @return
 	 */
 	@RequestMapping(value = "saveDoctor", method = RequestMethod.POST)
-	public String modifyDoctor(Doctor doctor) {
+	public String modifyDoctor(Doctor doctor,MultipartFile imageFile,HttpServletRequest request) {
+		
+		Doctor _d = null;
+		if(StringUtils.isNotBlank(doctor.getId())) {
+			_d = iDoctorManager.queryByPK(doctor.getId());
+		}
+		
+		if(imageFile!=null&&imageFile.getSize()>0){
+			String webRoot = request.getSession().getServletContext().getRealPath("");
+			Attach attach  = CommonUtils.uploadAttach(imageFile, webRoot, "/upload/qc/",null);
+			if(StringUtils.isNotBlank(attach.getAttachId()))
+				doctor.setHead("/upload/qc/"+attach.getAttachName());
+		}
+		if(_d != null && StringUtils.isBlank(doctor.getHead())) {
+			doctor.setHead(_d.getHead());
+		}
 		iDoctorManager.save(doctor);
 		return DOCTOR_LIST;
 	}

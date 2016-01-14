@@ -110,9 +110,9 @@ public class PgController extends GenericEntityController<Pg, Pg, PgManagerImpl>
 		
 		if(imageFile!=null&&imageFile.getSize()>0){
 			String webRoot = request.getSession().getServletContext().getRealPath("");
-			Attach attach  = CommonUtils.uploadAttach(imageFile, webRoot, "//upload//qc//",null);
+			Attach attach  = CommonUtils.uploadAttach(imageFile, webRoot, "/upload/qc/",null);
 			if(StringUtils.isNotBlank(attach.getAttachId()))
-				pg.setImage("//upload//qc//"+attach.getAttachName());
+				pg.setImage("/upload/qc/"+attach.getAttachName());
 		}
 		if(_pg != null && StringUtils.isBlank(pg.getImage())) {
 			pg.setImage(_pg.getImage());

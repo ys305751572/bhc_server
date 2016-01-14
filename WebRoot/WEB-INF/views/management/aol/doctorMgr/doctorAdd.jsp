@@ -25,7 +25,7 @@
 	settings.addConfigValue("width","880px");
 	settings.addConfigValue("height","260px");
 %>
-
+<script type="text/javascript" src="${contextPath}/resources/aol/js/uploadPreview.js" charset="UTF-8"></script>
 <!-- The styles -->
 <style type="text/css">
 	body {
@@ -54,6 +54,7 @@
 		
 <script type="text/javascript">		
 $(document).ready(function(){
+	$("#imageFile").uploadPreview({ width: 300, height: 300, imgDiv: "#imgDiv"});
 });
 
 function checkName() {
@@ -153,6 +154,15 @@ function submitFrom(){
 											  </div>
 											</div>
 										</td>
+										<td rowspan="5">
+									    	<div style="width:300px; height:300px; overflow:hidden; margin-top: 0px; margin-bottom: 18px; margin-left: 20px; border:1px solid blue;">
+												<div id="imgDiv">
+													<c:if test="${!empty doctor.head}">
+														<img src="${contextPath}${doctor.head}" width="400px" height="354px"  alt="${doctor.head}">
+													</c:if>
+												</div>
+											</div>
+									    </td>
 									</tr>
 									<tr>
 										<td>
@@ -220,6 +230,18 @@ function submitFrom(){
 											</div>
 										</td>
 									</tr>
+									
+									<tr>
+										<td>
+											<div class="control-group">
+											  <label class="control-label" style="width:60px;" for="imageFile">头像</label>
+											  <div class="controls" style="margin-left: 80px;">
+											  	  <input id="imageFile" name="imageFile" style="width:450px;" style="width:450px;" type="file" class="input-medium" />
+											  </div>
+											</div>
+										</td>
+									 </tr>
+									
 									<tr>
 										<td>
 											<div class="control-group">

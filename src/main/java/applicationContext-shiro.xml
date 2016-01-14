@@ -31,6 +31,7 @@
         </property>
 		<property name="filterChainDefinitions">
 			<value>
+				/upload/** = anon
 				/Captcha.jpg = anon
 				/styles/** = anon
 				/DemoTest/**=anon

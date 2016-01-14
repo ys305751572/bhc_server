@@ -61,14 +61,14 @@ public class IndexController {
 		loginUser.setLoginTime(new Timestamp(System.currentTimeMillis()));//用户登录时间
 		//基于现在的规则，普通用户很难判断其所属代理商，故暂时不考虑普通用户的代理商
 		if(!"0".equals(loginUser.getUserType())){
-			OrganiseManagerImpl orgMgl = (OrganiseManagerImpl) ServiceLocator.lookup(OrganiseManagerImpl.class);
-			Organise org = orgMgl.getOrgByUserId(loginUser.getUserId());
-			if(org == null){
-				return "redirect:/logout";
-			}
-			loginUser.setOrganiseId(org.getOrganiseId());//登录代理商ID
-			loginUser.setOrganiseName(org.getOrganiseName());//登录代理商名称
-			loginUser.setOrganiseShortname(org.getOrganiseShortname());//登录代理商简称
+//			OrganiseManagerImpl orgMgl = (OrganiseManagerImpl) ServiceLocator.lookup(OrganiseManagerImpl.class);
+//			Organise org = orgMgl.getOrgByUserId(loginUser.getUserId());
+//			if(org == null){
+//				return "redirect:/logout";
+//			}
+//			loginUser.setOrganiseId(org.getOrganiseId());//登录代理商ID
+//			loginUser.setOrganiseName(org.getOrganiseName());//登录代理商名称
+//			loginUser.setOrganiseShortname(org.getOrganiseShortname());//登录代理商简称
 		}
 		
 		//将用户信息放入session
