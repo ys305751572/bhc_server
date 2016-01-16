@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
@@ -426,7 +427,7 @@ public class MeasureController extends GenericEntityController<Measure,Measure,M
 	 */
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/reportxyTreeList", method=RequestMethod.POST)
-	public void reportxyTreeList(HttpServletRequest request, HttpServletResponse response){
+	public void reportxyTreeList(@RequestParam(value="username",required=false) String username, HttpServletRequest request, HttpServletResponse response){
 		
 		String userName = request.getParameter("usersname");
 		String deviceType = "1";
