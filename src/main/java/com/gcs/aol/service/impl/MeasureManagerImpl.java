@@ -361,15 +361,15 @@ public class MeasureManagerImpl extends GenericManagerImpl<Measure, MeasureDAO> 
 		EntityManager em = entityManagerFactory.createEntityManager();
 		Boolean falg = false;
 		try {
-			String innerSql = "select m, u.name as measureName,ud.bak1 from ";
-			String sql = "Measure m, AolUser u ,UserDevice ud where  ud.user_id = u.user_id  and ud.device_id=m.device_id " +
-					"and u.user_id = '"+userid+"' and (m.user_id='"+userid+"' or (m.user_id is null or m.user_id ='')) and m.device_id ='"+diviceID+"' and m.measureType='"+measureType+"' " ;
+			String innerSql = "select m, u.name as measureName,d.deviceSerial from ";
+			String sql = "Measure m, AolUser u ,Device d where  m.user_id = u.user_id  and m.device_id=d.deviceSerial " +
+					"and u.user_id = '"+userid+"' and (m.user_id='"+userid+"' or (m.user_id is null or m.user_id ='')) and d.device_id ='"+diviceID+"' and m.measureType='"+measureType+"' " ;
 			if(StringUtils.isNotBlank(sendTimeQ)||StringUtils.isNotBlank(sendTimeZ)){
 				if(StringUtils.isNotBlank(sendTimeQ)){
-					sql = sql + " and m.sendTime >= '" + DateUtil.formatStrDate(sendTimeQ) + " 00:00:00' ";
+					sql = sql + " and m.bak6 >= '" + DateUtil.formatStrDate(sendTimeQ) + " 00:00:00' ";
 				}
 				if(StringUtils.isNotBlank(sendTimeZ)){
-					sql = sql + " and m.sendTime <= '" + DateUtil.formatStrDate(sendTimeZ) + " 23:59:59' ";
+					sql = sql + " and m.bak6 <= '" + DateUtil.formatStrDate(sendTimeZ) + " 23:59:59' ";
 				}
 			}else{
 				falg = true;

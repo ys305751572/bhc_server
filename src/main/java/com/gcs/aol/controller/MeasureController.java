@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
+import com.gcs.aol.entity.AolUser;
 import com.gcs.aol.entity.HighCharVo;
 import com.gcs.aol.entity.Measure;
+import com.gcs.aol.service.IAolUserManager;
 import com.gcs.aol.service.impl.DeviceManagerImpl;
 import com.gcs.aol.service.impl.MeasureManagerImpl;
 import com.gcs.aol.utils.DateUtil;
@@ -59,6 +61,9 @@ public class MeasureController extends GenericEntityController<Measure,Measure,M
 	
 	@Autowired
 	private DeviceManagerImpl deviceManagerImpl;
+	
+	@Autowired
+	private IAolUserManager aolUserManager;
 	
 	/**
 	 * 跳转到血糖预警页面
@@ -455,6 +460,9 @@ public class MeasureController extends GenericEntityController<Measure,Measure,M
 		Long count = (long)pv.getCount();
 		List<DeciveListVO> tmpList = pv.getList();
 		List<TreeNodeVO> list= ListToTreeUtils.getTreeNode(tmpList);
+		
+//		List<AolUser> tmpList = aolUserManager.findByName(username);
+//		List<TreeNodeVO> list= ListToTreeUtils.getTreeNode(tmpList);
 		try {
 			response.setContentType("applicatin/json;charset=UTF-8");
 			response.setCharacterEncoding("utf-8");

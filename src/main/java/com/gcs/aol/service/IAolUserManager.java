@@ -115,4 +115,7 @@ public interface IAolUserManager extends GenericManager<AolUser> {
 	 * @return
 	 */
 	public Boolean checkUsers(String userId, String account);
+	
+	public List<AolUser> findByName(String name);
+	
 }

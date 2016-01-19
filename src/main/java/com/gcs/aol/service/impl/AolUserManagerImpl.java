@@ -600,5 +600,20 @@ public class AolUserManagerImpl extends GenericManagerImpl<AolUser, AolUserDAO> 
 			return true;
 		}
 	}
+	@Override
+	public List<AolUser> findByName(String name) {
+		
+		String sql = "select u from AolUser u where u.name like '%" + name + "%'";
+		EntityManager em = entityManagerFactory.createEntityManager();
+		List<AolUser> list = null;
+		try{
+			list = (List<AolUser>) em.createQuery(sql);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		
+		em.close();
+		return list;
+	}
 	
 }

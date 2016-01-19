@@ -87,8 +87,8 @@ public class DeviceManagerImpl extends GenericManagerImpl<Device, DeviceDAO> imp
 		PageVO pv = new PageVO();
 		EntityManager em = entityManagerFactory.createEntityManager();
 		
-		String innerSql = "select d, u.name as measureName,u.user_id,ud.bak1 from ";
-		String sql = "AolUser u, Device d, UserDevice ud where u.user_id = ud.user_id and ud.device_id = d.device_id ";
+		String innerSql = "select d, u.name as measureName,u.user_id,d.deviceSerial from ";
+		String sql = "AolUser u, Device d where u.user_id = d.user_id";
 		if(StringUtils.isNotBlank(decivesearchvO.getUserName())){
 			sql = sql + " and u.name like '%" + decivesearchvO.getUserName().trim() + "%' ";
 		}if(StringUtils.isNotBlank(decivesearchvO.getDeviceType())){

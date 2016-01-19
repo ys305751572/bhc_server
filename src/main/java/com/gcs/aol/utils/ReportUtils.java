@@ -78,7 +78,7 @@ public class ReportUtils {
 		List<Map<String, String>> xtlist = new ArrayList<Map<String,String>>();
 		for (MeasureListVO measureListVO : measurelistvolist) {
 			//装入血糖
-			xtlist.add(setMap(DateUtil.DeleteYear(measureListVO.getSendTime()), measureListVO.getResult4()));
+			xtlist.add(setMap(DateUtil.DeleteYear(DateUtil.timestampToString(measureListVO.getBak6())), measureListVO.getResult4()));
 		}
 		xt.setHighvalue(xtlist);
 		charVos.add(xt);

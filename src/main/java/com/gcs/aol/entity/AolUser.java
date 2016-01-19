@@ -1,10 +1,13 @@
 package com.gcs.aol.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cache;
@@ -80,6 +83,18 @@ public class AolUser extends AbstractEntity implements Serializable {
 	//新增字段：备注姓名
 	private String remark = null;
 	
+	@OneToMany
+	@JoinColumn(name="user_id")
+	private List<Device> list;
+	
+	public List<Device> getList() {
+		return list;
+	}
+
+	public void setList(List<Device> list) {
+		this.list = list;
+	}
+
 	public AolUser(){
 	}
 

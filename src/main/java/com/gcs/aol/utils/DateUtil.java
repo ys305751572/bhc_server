@@ -1,10 +1,14 @@
 package com.gcs.aol.utils;
 
+import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+
+import org.apache.commons.lang3.StringUtils;
 
 
 
@@ -24,6 +28,18 @@ public class DateUtil {
 			e.printStackTrace();
 		}
 	return dPromise;
+	}
+	
+	public static String timestampToString(Timestamp time) {
+		return timestampToString(time, null);
+	}
+	
+	public static String timestampToString(Timestamp time,String format) {
+		if(StringUtils.isBlank(format)) {
+			format = foramtDate;
+		}
+		SimpleDateFormat sdf = new SimpleDateFormat(format);
+		return sdf.format(time);
 	}
 	
 	public static String DeleteYear(String date){
