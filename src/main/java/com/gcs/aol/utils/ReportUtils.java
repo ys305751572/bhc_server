@@ -150,11 +150,11 @@ public class ReportUtils {
 		List<Map<String, String>> xllist = new ArrayList<Map<String,String>>();
 		for (MeasureListVO measureListVO : measurelistvolist) {
 			//装入GY
-			gylist.add(setMap(DateUtil.DeleteYear(measureListVO.getSendTime()), measureListVO.getResult2()));
+			gylist.add(setMap(DateUtil.DeleteYear(DateUtil.timestampToString(measureListVO.getBak6())), measureListVO.getResult2()));
 			//装入低压
-			dylist.add(setMap(DateUtil.DeleteYear(measureListVO.getSendTime()), measureListVO.getResult3()));
+			dylist.add(setMap(DateUtil.DeleteYear(DateUtil.timestampToString(measureListVO.getBak6())), measureListVO.getResult3()));
 			//装入心率
-			xllist.add(setMap(DateUtil.DeleteYear(measureListVO.getSendTime()), measureListVO.getResult4()));
+			xllist.add(setMap(DateUtil.DeleteYear(DateUtil.timestampToString(measureListVO.getBak6())), measureListVO.getResult4()));
 		}
 		//第一条高压
 		gy.setHighvalue(gylist);

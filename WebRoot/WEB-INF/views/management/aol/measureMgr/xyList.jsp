@@ -75,7 +75,7 @@ Date.prototype.format = function(format){
 							    {'text':'低压状态','render':dyztRender,'width':'50px'},
 							    {'text':'预警舒张压','render':yjdyRender,'width':'70px'},
 							    {'text':'心率','dataIndex':'result4','width':'30px'},
-							    {'text':'测量时间','dataIndex':'sendTime','width':'130px'},
+							    {'text':'测量时间','dataIndex':'bak6','render': timeRender,'width':'130px'},
 							    {'text':'操作','dataIndex':'userxx','width':'110px','render':caoZuoRender}
 							    ];
 				var arrayObj = [];
@@ -116,6 +116,14 @@ Date.prototype.format = function(format){
 					return _measureName;
 				}
 
+				function timeRender(row) {
+					var regtime = "";
+					if(row.bak6){
+						regtime = new Date(row.bak6).format("yyyy-MM-dd hh:mm:ss");
+					}
+					return regtime;
+				}
+				
 				//自定义渲染的回调函数--设备类型
 				function measureTypeRender(row){
 					var mstype = "";

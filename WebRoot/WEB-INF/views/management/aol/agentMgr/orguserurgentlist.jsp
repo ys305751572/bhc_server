@@ -71,7 +71,7 @@ Date.prototype.format = function(format){
 							    {'text':'生日','dataIndex':'birthday','width':'80px'},
 							    {'text':'身高','dataIndex':'height','width':'60px'},
 							    {'text':'体重','dataIndex':'weight','width':'60px'},
-							    {'text':'手机号码','dataIndex':'mobile','width':'100px'},
+							    {'text':'手机号码','dataIndex':'mobile','render': mobileRender,'width':'100px'},
 							    {'text':'邮箱','dataIndex':'email','width':'150px'},
 							    {'text':'注册时间','dataIndex':'bak5','render':regRender,'width':'120px'}
 							    ];
@@ -116,7 +116,6 @@ Date.prototype.format = function(format){
 					} else {
 						_ss_name = _name
 					}
-				
 					return '<a href="javascript:setUserUrgent(\''+row.userId+'\');">' + _ss_name + '</a>';
 				}
 				
@@ -126,6 +125,14 @@ Date.prototype.format = function(format){
 						regtime = new Date(row.bak5).format("yyyy-MM-dd hh:mm:ss")
 					}
 					return regtime;
+				}
+				
+				function mobileRender(row){
+					if(!row.mobile){
+						return "";
+					}else {
+						return row.mobile
+					}
 				}
 				
 				function searchBtnClick(){
@@ -149,7 +156,7 @@ Date.prototype.format = function(format){
 						}
 					}
 
-					window.location.href = "${contextPath}/management/urgentperson/userurgentlist?userId="+dataTableObj.getSelectedRow().userId;
+					window.location.href = "${contextPath}/management/urgentperson/userurgentlist?userId="+userId;
 				}
 		</script>
 	</head>

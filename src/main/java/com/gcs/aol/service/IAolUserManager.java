@@ -59,7 +59,7 @@ public interface IAolUserManager extends GenericManager<AolUser> {
 	 * @param regTimeZ
 	 * @return
 	 */
-	public PageVO queryUsersDataList(PageParameters pp, String usersname, String sexType, String mobile, String birthday, String regTimeQ, String regTimeZ, String orgId);
+	public PageVO queryUsersDataList(PageParameters pp, String usersname, String sexType, String mobile, String birthday, String regTimeQ, String regTimeZ, String userType,String userId);
 	
 	/**
 	 * 根据代理商ID获取其所属用户

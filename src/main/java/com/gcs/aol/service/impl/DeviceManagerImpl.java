@@ -17,8 +17,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gcs.aol.dao.DeviceDAO;
+import com.gcs.aol.entity.AolUser;
 import com.gcs.aol.entity.Device;
+import com.gcs.aol.service.IAolUserManager;
 import com.gcs.aol.service.IDeviceManager;
+import com.gcs.aol.service.IUserDeviceManager;
 import com.gcs.aol.vo.DeciveListVO;
 import com.gcs.aol.vo.DeciveSearchVO;
 import com.gcs.aol.vo.DeviceListVO;
@@ -32,6 +35,9 @@ public class DeviceManagerImpl extends GenericManagerImpl<Device, DeviceDAO> imp
 	DeviceDAO deviceDAO;
 	@Autowired
 	EntityManagerFactory entityManagerFactory;
+	
+	@Autowired
+	private IAolUserManager userManager;
 	
 	/**
 	 * 根据设备序列号和代理商ID查询设备信息
@@ -88,7 +94,7 @@ public class DeviceManagerImpl extends GenericManagerImpl<Device, DeviceDAO> imp
 		EntityManager em = entityManagerFactory.createEntityManager();
 		
 		String innerSql = "select d, u.name as measureName,u.user_id,d.deviceSerial from ";
-		String sql = "AolUser u, Device d where u.user_id = d.user_id";
+		String sql = "AolUser u ,Device d WHERE 1 =1 and u.user_id = d.user_id";
 		if(StringUtils.isNotBlank(decivesearchvO.getUserName())){
 			sql = sql + " and u.name like '%" + decivesearchvO.getUserName().trim() + "%' ";
 		}if(StringUtils.isNotBlank(decivesearchvO.getDeviceType())){
@@ -124,6 +130,7 @@ public class DeviceManagerImpl extends GenericManagerImpl<Device, DeviceDAO> imp
 				pv.setStart(pp.getStart());
 				pv.setLength(pp.getLength());
 			}
+			
 			pv.setList(decivelist);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -184,6 +191,8 @@ public class DeviceManagerImpl extends GenericManagerImpl<Device, DeviceDAO> imp
 				pv.setStart(pp.getStart());
 				pv.setLength(pp.getLength());
 			}
+			
+//			List<AolUser> aolUserList = userManager.queryAll("user_id", false);
 			pv.setList(decivelist);
 		} catch (Exception e) {
 			e.printStackTrace();

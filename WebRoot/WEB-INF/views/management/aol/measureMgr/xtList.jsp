@@ -71,7 +71,7 @@ Date.prototype.format = function(format){
 							    {'text':'测量血糖','dataIndex':'result4','width':'100px'},
 							    {'text':'血糖状态','render':xtztRender,'width':'60px'},
 							    {'text':'预警血糖','render':yjxtRender,'width':'100px'},
-							    {'text':'测量时间','dataIndex':'sendTime','width':'200px'},
+							    {'text':'测量时间','dataIndex':'bak6','render':timeRender,'width':'200px'},
 							    {'text':'操作','dataIndex':'userxx','width':'100px','render':caoZuoRender}
 							    ];
 				var arrayObj = [];
@@ -112,6 +112,14 @@ Date.prototype.format = function(format){
 						_measureName = "<span style='color:red'>【未填】</span>";
 					}
 					return _measureName;
+				}
+				
+				function timeRender(row) {
+					var regtime = "";
+					if(row.bak6){
+						regtime = new Date(row.bak6).format("yyyy-MM-dd hh:mm:ss");
+					}
+					return regtime;
 				}
 				
 				//自定义渲染的回调函数--设备类型

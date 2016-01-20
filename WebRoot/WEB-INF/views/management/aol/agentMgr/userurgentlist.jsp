@@ -84,7 +84,9 @@
 					   <dd>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：&nbsp;<input type="text" id='urgentxm' name='urgentxm' value="${urgentPersontemp.urgentxm}" readonly="readonly"/></dd>
 					   <dd>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：&nbsp;<input type="text" id='telephone'  name='telephone' value="${urgentPersontemp.telephone}" readonly="readonly"/></dd>
 					   <dd>通讯地址：&nbsp;<input type="text" id='address' name='address' value="${urgentPersontemp.address}" style="width:500px;" readonly="readonly"/></dd>
+					   <!-- 
 					   <dd>自动发送：&nbsp;<input type="checkbox" id='sffs' name='sffs' <c:if test="${urgentPersontemp.sffs=='1'}">checked="checked"</c:if> readonly="readonly"/></dd>
+					    -->
 					</dl>
 				</form>
 				</div> 

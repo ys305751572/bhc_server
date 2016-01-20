@@ -210,8 +210,10 @@ Date.prototype.format = function(format){
 					<li><a href="javascript:viewUserInfo();" class="button button-rounded button-flat button-tiny" style="width: 120px;"><i class="icon-6" style="width: 20px; height: 20px; line-height: 20px;"></i>&nbsp;查看用户信息</a></li>
 					<li style="color: #c5c5c5">|</li>
 					<li><a href="javascript:modifyRemark();" class="button button-rounded button-flat button-tiny" style="width: 100px;"><i class="icon-2" style="width: 20px; height: 20px; line-height: 20px;"></i>&nbsp;修改姓名</a></li>
+					<!-- 
 					<li style="color: #c5c5c5">|</li>
 					<li><a href="javascript:handAddDevice();" class="button button-rounded button-flat button-tiny" style="width: 100px;"><i class="icon-7" style="width: 20px; height: 20px; line-height: 20px;"></i>&nbsp;添加设备</a></li>
+					 -->
 				</div>
 				<!-- 操作按钮end -->
 				

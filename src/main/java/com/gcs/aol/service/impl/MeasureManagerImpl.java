@@ -49,10 +49,10 @@ public class MeasureManagerImpl extends GenericManagerImpl<Measure, MeasureDAO> 
 				sql = sql + " and u.name like '%" + measureSearchVO.getUserName().trim() + "%' ";
 			}
 			if(StringUtils.isNotBlank(measureSearchVO.getSendTimeQ())){
-				sql = sql + " and m.sendTime >= '" + measureSearchVO.getSendTimeQ().trim() + " 00:00:00' ";
+				sql = sql + " and m.bak6 >= '" + measureSearchVO.getSendTimeQ().trim() + " 00:00:00' ";
 			}
 			if(StringUtils.isNotBlank(measureSearchVO.getSendTimeZ())){
-				sql = sql + " and m.sendTime <= '" + measureSearchVO.getSendTimeZ().trim() + " 23:59:59' ";
+				sql = sql + " and m.bak6 <= '" + measureSearchVO.getSendTimeZ().trim() + " 23:59:59' ";
 			}
 			if(StringUtils.isNotBlank(measureSearchVO.getXtstate())){
 				if("0".equals(measureSearchVO.getXtstate())){
@@ -64,23 +64,24 @@ public class MeasureManagerImpl extends GenericManagerImpl<Measure, MeasureDAO> 
 				} else {
 					
 				}
+				sql = sql + " order by m.bak6 desc";
 			}
-			if(!"00000000000000000000000000000000".equals(measureSearchVO.getOrganiseId())){
-				String devIdStr = "";
-				List<String> devIds = getDeviceIdsByOrg(measureSearchVO.getOrganiseId());
-				if(devIds != null){
-					for(int i=0; i<devIds.size(); i++){
-						devIdStr = devIdStr + "'" + devIds.get(i) + "',";
-					}
-				}
-				if(StringUtils.isNotBlank(devIdStr)){
-					devIdStr = devIdStr.substring(0, devIdStr.length()-1);
-				} else {
-					devIdStr = "'          '";
-				}
-				
-				sql = sql + " and m.device_id in (" + devIdStr + ")";
-			}
+//			if(!"00000000000000000000000000000000".equals(measureSearchVO.getOrganiseId())){
+//				String devIdStr = "";
+//				List<String> devIds = getDeviceIdsByOrg(measureSearchVO.getOrganiseId());
+//				if(devIds != null){
+//					for(int i=0; i<devIds.size(); i++){
+//						devIdStr = devIdStr + "'" + devIds.get(i) + "',";
+//					}
+//				}
+//				if(StringUtils.isNotBlank(devIdStr)){
+//					devIdStr = devIdStr.substring(0, devIdStr.length()-1);
+//				} else {
+//					devIdStr = "'          '";
+//				}
+//				
+//				sql = sql + " and m.device_id in (" + devIdStr + ")";
+//			}
 			
 			msvoLost = new ArrayList<MeasureListVO>();
 			List list = null;
@@ -134,10 +135,10 @@ public class MeasureManagerImpl extends GenericManagerImpl<Measure, MeasureDAO> 
 				sql = sql + " and u.name like '%" + measureSearchVO.getUserName().trim() + "%' ";
 			}
 			if(StringUtils.isNotBlank(measureSearchVO.getSendTimeQ())){
-				sql = sql + " and m.sendTime >= '" + measureSearchVO.getSendTimeQ().trim() + " 00:00:00' ";
+				sql = sql + " and m.bak6 >= '" + measureSearchVO.getSendTimeQ().trim() + " 00:00:00' ";
 			}
 			if(StringUtils.isNotBlank(measureSearchVO.getSendTimeZ())){
-				sql = sql + " and m.sendTime <= '" + measureSearchVO.getSendTimeZ().trim() + " 23:59:59' ";
+				sql = sql + " and m.bak6 <= '" + measureSearchVO.getSendTimeZ().trim() + " 23:59:59' ";
 			}
 			if(StringUtils.isNotBlank(measureSearchVO.getXtstate())){
 				if("0".equals(measureSearchVO.getXtstate())){//低雪压
@@ -157,23 +158,24 @@ public class MeasureManagerImpl extends GenericManagerImpl<Measure, MeasureDAO> 
 				} else if("7".equals(measureSearchVO.getXtstate())){//低压偏低
 					sql = sql + " and m.result3 < 60 ";
 				} 
+				sql = sql + " order by m.bak6 desc";
 			}
-			if(!"00000000000000000000000000000000".equals(measureSearchVO.getOrganiseId())){
-				String devIdStr = "";
-				List<String> devIds = getDeviceIdsByOrg(measureSearchVO.getOrganiseId());
-				if(devIds != null){
-					for(int i=0; i<devIds.size(); i++){
-						devIdStr = devIdStr + "'" + devIds.get(i) + "',";
-					}
-				}
-				if(StringUtils.isNotBlank(devIdStr)){
-					devIdStr = devIdStr.substring(0, devIdStr.length()-1);
-				} else {
-					devIdStr = "'          '";
-				}
-				
-				sql = sql + " and m.device_id in (" + devIdStr + ")";
-			}
+//			if(!"00000000000000000000000000000000".equals(measureSearchVO.getOrganiseId())){
+//				String devIdStr = "";
+//				List<String> devIds = getDeviceIdsByOrg(measureSearchVO.getOrganiseId());
+//				if(devIds != null){
+//					for(int i=0; i<devIds.size(); i++){
+//						devIdStr = devIdStr + "'" + devIds.get(i) + "',";
+//					}
+//				}
+//				if(StringUtils.isNotBlank(devIdStr)){
+//					devIdStr = devIdStr.substring(0, devIdStr.length()-1);
+//				} else {
+//					devIdStr = "'          '";
+//				}
+//				
+//				sql = sql + " and m.device_id in (" + devIdStr + ")";
+//			}
 			
 			msvoLost = new ArrayList<MeasureListVO>();
 			List list = null;

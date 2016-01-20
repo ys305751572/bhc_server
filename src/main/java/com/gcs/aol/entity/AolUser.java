@@ -69,7 +69,7 @@ public class AolUser extends AbstractEntity implements Serializable {
 	private String bak2 = null;
 	// 备用字段3
 	private String bak3 = null;
-	// 用户类型(0:普通用户, 1:代理商管理员, 2:特殊用户, 99:总公司)
+	// 用户类型(0:普通用户, 1:代理商管理员(取消), 2:特殊用户(取消), 99:系统管理员)
 	private String bak4 = null;
     // 注册时间
 	private java.sql.Timestamp bak5 = null;

@@ -136,6 +136,7 @@ public class AolUserController extends GenericEntityController<AolUser, AolUser,
 	 * @param request
 	 * @return
 	 */
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/getUsersDataList", method=RequestMethod.POST)
 	@ResponseBody
 	public JSONResponse getUsersDataList(@RequestBody JSONParam[] params,HttpServletRequest request){
@@ -152,17 +153,47 @@ public class AolUserController extends GenericEntityController<AolUser, AolUser,
 		String sortStr = paramMap.get("bbSortName");
 		PageParameters pp = PageUtil.getParameter(paramMap, sortStr);
 		
-		PageVO pv = this.getEntityManager().queryUsersDataList(pp, usersname, sexType, mobile, birthday, regTimeQ, regTimeZ, loginuser.getOrganiseId());
-		Long count = (long)pv.getCount();
-		List tmpList = pv.getList();
-		return successed(new DataTableReturnObject(count, count, pp.getSEcho(),tmpList));
+		PageVO pv = null;
+		JSONResponse resp = null;
+		try{
+			pv = this.getEntityManager().queryUsersDataList(pp, usersname, sexType, mobile, birthday, regTimeQ, regTimeZ, loginuser.getUserType(),loginuser.getUserId());
+			List<AolUser> tmpList = pv.getList();
+			List<AolUser> renderList = new ArrayList<AolUser>();
+			AolUser aolUser = new AolUser();
+			aolUser.setName("admin");
+//			aolUser.setSex("男");
+//			aolUser.setBirthday("1989-09-15");
+//			aolUser.setHeight("174");
+//			aolUser.setWeight("85");
+//			aolUser.setMobile("123456789");
+//			aolUser.setBak5(Timestamp.valueOf("2016-1-15 00:00:00"));
+//			aolUser.setEmail("30575157@qq.com");
+			for (AolUser u : tmpList) {
+				AolUser _u = new AolUser();
+				_u.setUserId(u.getUserId());
+				_u.setName(u.getName());
+				_u.setSex(u.getSex());
+				_u.setBirthday(u.getBirthday());
+				_u.setHeight(u.getHeight());
+				_u.setWeight(u.getWeight());
+				_u.setMobile(u.getMobile());
+				_u.setBak5(u.getBak5());
+				_u.setEmail(u.getEmail());
+				renderList.add(_u);
+			}
+			resp = successed(new DataTableReturnObject(pv.getCount(), pv.getCount(), pp.getSEcho(),renderList));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return resp;
+				
 	}
 	
 	@RequestMapping(value="/sfUserInfo", method=RequestMethod.POST)
 	@ResponseBody
 	public void sfUserInfo(HttpServletRequest request, HttpServletResponse response, String userId){
-		List<UserDevice> udlist = null;
-		udlist  = userDeviceManager.queryByProperty("user_id", userId);
+		List<Device> udlist = null;
+		udlist  = deviceManager.queryByProperty("user_id", userId);
 		String msg = "";
 		if(udlist == null||udlist.size() == 0){
 			msg = "无法查询";
@@ -192,15 +223,15 @@ public class AolUserController extends GenericEntityController<AolUser, AolUser,
 		List<Device> devicelist = new ArrayList<Device>();
 		String xml = "";
 		if((!StringUtils.isNotBlank(deviceId))||StringUtils.isNotBlank(urltype)){
-			udlist  = userDeviceManager.queryByProperty("user_id", userId);
+			devicelist  = deviceManager.queryByProperty("user_id", userId);
 			//根据查询出来的设备ID找到设备
-			for (UserDevice userDevice : udlist) {
-				List<Device> dlist = new ArrayList<Device>();
-				dlist = deviceManager.queryByProperty("device_id", userDevice.getDevice_id());
-				if(dlist.size()>0){
-					devicelist.add(dlist.get(0));
-				}
-			}
+//			for (UserDevice userDevice : udlist) {
+//				List<Device> dlist = new ArrayList<Device>();
+//				dlist = deviceManager.queryByProperty("device_id", userDevice.getDevice_id());
+//				if(dlist.size()>0){
+//					devicelist.add(dlist.get(0));
+//				}
+//			}
 			if(!StringUtils.isNotBlank(deviceId)){
 				deviceId = devicelist.get(0).getDevice_id();
 			}
