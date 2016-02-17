@@ -3,7 +3,7 @@
  * For licensing, see LICENSE.html or http://ckeditor.com/license
  */
 CKEDITOR.editorConfig = function( config ) {
- config.enterMode = CKEDITOR.ENTER_BR;
+ config.enterMode = CKEDITOR.ENTER_P;
  config.shiftEnterMode = CKEDITOR.ENTER_BR;// 
  config.pasteFromWordRemoveStyles = true;
  config.filebrowserImageUploadUrl = basePath+"/article/articleinfo/saveImg";

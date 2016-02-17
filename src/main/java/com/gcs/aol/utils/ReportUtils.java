@@ -21,7 +21,7 @@ public class ReportUtils {
 		List<Map<String, String>> twlist = new ArrayList<Map<String,String>>();
 		for (MeasureListVO measureListVO : measurelistvolist) {
 			//装入血糖
-			twlist.add(setMap(DateUtil.DeleteYear(measureListVO.getSendTime()), measureListVO.getResult4()));
+			twlist.add(setMap(DateUtil.DeleteYear(DateUtil.timestampToString(measureListVO.getBak6())), measureListVO.getResult4()));
 		}
 		tw.setHighvalue(twlist);
 		charVos.add(tw);
@@ -58,7 +58,7 @@ public class ReportUtils {
 		strxml = "<graph caption='"+title+"'    canvasBorderColor = '#FFFFFF' bgColor='#FFFFFF' showBorder='0'  baseFontSize='12' canvasRightMargin='30'  showLabels ='0' > ";
 		strxml = strxml +"<categories > ";
 		for (MeasureListVO measureListVO : measurelistvolist) {
-				strxml =  strxml +"<category name='"+measureListVO.getSendTime()+"' />";
+				strxml =  strxml +"<category name='"+DateUtil.timestampToString(measureListVO.getBak6())+"' />";
 		}
 		strxml = strxml +"</categories>  ";
 		//体重
@@ -117,7 +117,7 @@ public class ReportUtils {
 		strxml = strxml +"<categories > ";
 		
 		for (MeasureListVO measureListVO : measurelistvolist) {
-				strxml =  strxml +"<category name='"+measureListVO.getSendTime()+"' />";
+				strxml =  strxml +"<category name='"+DateUtil.timestampToString(measureListVO.getBak6())+"' />";
 		}
 		strxml = strxml +"</categories>  ";
 		//高血糖
@@ -213,7 +213,7 @@ public class ReportUtils {
 		strxml = "<graph caption='"+title+"'  labelStep='2' canvasBorderColor = '#FFFFFF' bgColor='#FFFFFF' showBorder='0'  baseFontSize='12' canvasRightMargin='30' rotateNames='0' showLabels ='0'> ";
 		strxml = strxml +"<categories fontSize='9'> ";
 		for (MeasureListVO measureListVO : measurelistvolist) {
-				strxml =  strxml +"<category   name='"+DateUtil.DeleteYear(measureListVO.getSendTime())+"' /> ";
+				strxml =  strxml +"<category   name='"+DateUtil.DeleteYear(DateUtil.timestampToString(measureListVO.getBak6()))+"' /> ";
 		}
 		strxml = strxml +"</categories>  ";
 		//高血压

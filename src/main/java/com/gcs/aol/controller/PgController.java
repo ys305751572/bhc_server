@@ -93,6 +93,8 @@ public class PgController extends GenericEntityController<Pg, Pg, PgManagerImpl>
 	@RequestMapping(value = "pageEdit",method = RequestMethod.GET)
 	public String pageEdit(String id,Model model) {
 		Pg pg = manager.queryByPK(id);
+		
+		pg.setContent(StringUtils.isBlank(pg.getContent()) ? "" : pg.getContent().replace("\"", "\'"));
 		model.addAttribute("pg", pg);
 		return PG_EDIT;
 	} 

@@ -363,9 +363,11 @@
 					<li id="menu9">
                         <a href="#" name="firstMenu"><span class="aol aol-system"></span> 系统管理<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
+                        	<!-- 
                             <li id="menu9_1" onclick="changeMenu(this.id,'系统管理&nbsp;>&nbsp;基本信息')">
                                 <a href="${contextPath}/management/organise/viewowninfo" target="mainIFrame">基本信息</a>
                             </li>
+                             -->
                             <li id="menu9_2" onclick="changeMenu(this.id,'系统管理&nbsp;>&nbsp;日志信息查询')">
                                 <a href="${contextPath}/management/loginfo/logslist" target="mainIFrame">日志信息查询</a>
                             </li>
