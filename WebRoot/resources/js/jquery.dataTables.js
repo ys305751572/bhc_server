@@ -9685,7 +9685,7 @@
 		 *      } );
 		 *    } )
 		 */
-		"sPaginationType": "two_button",
+		"sPaginationType": "full_numbers",
 	
 	
 		/**
